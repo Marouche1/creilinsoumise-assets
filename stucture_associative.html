@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Système Associatif - Creil</title>
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(145deg, #b3127d, #ff4f7b, #ff8a3d, #ff3de1);
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --card-radius: 24px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
+      --text-white: #ffffff;
+      --text-muted: #f4e9ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-white);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      height: 60px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.95);
+      padding: 8px 16px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-home {
+      padding: 12px 24px;
+      background: linear-gradient(90deg, #8f2fff, #ff3de1);
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.3s;
+    }
+
+    .btn-home:hover {
+      transform: scale(1.05);
+    }
+
+    /* TITRE */
+    .page-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 32px;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    /* TOGGLE STRUCTURES */
+    .toggle-section {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .btn-toggle {
+      padding: 14px 32px;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+    }
+
+    .btn-toggle:hover {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.05);
+    }
+
+    /* STRUCTURES DE SOUTIEN */
+    .structures-container {
+      background: var(--card-bg);
+      border-radius: var(--card-radius);
+      padding: 40px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-soft);
+      border: 2px solid rgba(59, 130, 246, 0.3);
+      display: none;
+    }
+
+    .structures-container.active {
+      display: block;
+      animation: slideDown 0.5s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .structures-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .structures-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .structure-block {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 28px;
+      border: 2px solid;
+      backdrop-filter: blur(5px);
+    }
+
+    .structure-block.noyau { border-color: #3b82f6; background: rgba(59, 130, 246, 0.1); }
+    .structure-block.finance { border-color: #06b6d4; background: rgba(6, 182, 212, 0.1); }
+    .structure-block.accomp { border-color: #10b981; background: rgba(16, 185, 129, 0.1); }
+
+    .structure-block h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      text-align: center;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .structure-item {
+      background: rgba(0,0,0,0.3);
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .structure-item:hover {
+      background: rgba(0,0,0,0.5);
+      transform: translateX(5px);
+    }
+
+    .structure-name {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .structure-desc {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    /* AGENTS DE LIAISON */
+    .agents-section {
+      background: var(--card-bg);
+      border-radius: var(--card-radius);
+      padding: 40px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-soft);
+      border: 2px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .agents-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+    }
+
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .agent-card {
+      background: rgba(139, 92, 246, 0.2);
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      border: 1px solid rgba(139, 92, 246, 0.5);
+    }
+
+    .agent-icon {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+    }
+
+    .agent-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* OUTILS TRANSVERSAUX */
+    .tools-container {
+      background: rgba(0,0,0,0.3);
+      border-radius: 20px;
+      padding: 32px;
+      border: 2px solid rgba(234, 179, 8, 0.5);
+    }
+
+    .tools-title {
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+      color: #fbbf24;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .tool-btn {
+      padding: 24px 16px;
+      border-radius: 16px;
+      border: none;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
+
+    .tool-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .tool-icon {
+      font-size: 2.5rem;
+    }
+
+    .tool-label {
+      font-size: 1rem;
+    }
+
+    .tool-sublabel {
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .tool-chatbot { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
+    .tool-agenda { background: linear-gradient(135deg, #12b886, #00bcd4); }
+    .tool-visio { background: linear-gradient(135deg, #10b981, #059669); }
+    .tool-docs { background: linear-gradient(135deg, #f59e0b, #d97706); }
+    .tool-benevole { background: linear-gradient(135deg, #ef4444, #dc2626); }
+
+    .online-dot {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 12px;
+      height: 12px;
+      background: #10b981;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      50% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+    }
+
+    /* MENU BÉNÉVOLE */
+    .benevole-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      margin-top: 8px;
+      background: #7f1d1d;
+      border-radius: 12px;
+      overflow: hidden;
+      display: none;
+      z-index: 10;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .benevole-menu.active {
+      display: block;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .benevole-option {
+      padding: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .benevole-option:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .benevole-option:last-child {
+      border-bottom: none;
+    }
+
+    /* CATÉGORIES */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 24px;
+    }
+
+    .category-card {
+      background: var(--card-bg);
+      border-radius: var(--card-radius);
+      padding: 28px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-soft);
+      border: 2px solid;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .category-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .category-icon {
+      font-size: 3rem;
+    }
+
+    .category-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .category-count {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .category-tools {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .cat-tool-btn {
+      padding: 12px 8px;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.3);
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+    }
+
+    .cat-tool-btn:hover {
+      background: rgba(0,0,0,0.5);
+      transform: scale(1.05);
+    }
+
+    .cat-tool-icon {
+      font-size: 1.5rem;
+    }
+
+    /* Couleurs par catégorie */
+    .cat-culture { border-color: #ec4899; }
+    .cat-ecologie { border-color: #10b981; }
+    .cat-education { border-color: #f59e0b; }
+    .cat-social { border-color: #ef4444; }
+    .cat-solidarite { border-color: #8b5cf6; }
+    .cat-sport { border-color: #3b82f6; }
+
+    .chatbot-special {
+      background: linear-gradient(135deg, #8e2de2, #4a00e0) !important;
+      position: relative;
+    }
+
+    .chatbot-special::before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    /* LISTE ASSOCIATIONS */
+    .associations-list {
+      margin-top: 20px;
+      display: none;
+      animation: slideDown 0.5s ease-out;
+    }
+
+    .associations-list.active {
+      display: block;
+    }
+
+    .association-item {
+      background: rgba(0,0,0,0.4);
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .association-item:hover {
+      background: rgba(0,0,0,0.6);
+      transform: translateX(5px);
+    }
+
+    .asso-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .asso-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .asso-action-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1.2rem;
+    }
+
+    .asso-action-btn:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.1);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .page-title { font-size: 1.8rem; }
+      .structures-grid { grid-template-columns: 1fr; }
+      .categories-grid { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      .category-tools { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <header class="header">
+      <img src="https://via.placeholder.com/200x80/b3127d/ffffff?text=Creil+l%27Insoumise" alt="Logo" class="logo">
+      <a href="page1.html" class="btn-home">← Retour Accueil</a>
+    </header>
+
+    <!-- TITRE -->
+    <h1 class="page-title">🏛️ Système Associatif de Creil</h1>
+    <p style="text-align: center; font-size: 1.1rem; margin-bottom: 32px; opacity: 0.9;">
+      352 associations • 13 structures de soutien • 1 plateforme intelligente
+    </p>
+
+    <!-- TOGGLE STRUCTURES -->
+    <div class="toggle-section">
+      <button class="btn-toggle" onclick="toggleStructures()">
+        <span id="toggle-text">📊 Afficher les 13 structures de soutien</span>
+      </button>
+    </div>
+
+    <!-- STRUCTURES DE SOUTIEN -->
+    <div id="structures" class="structures-container">
+      <h2 class="structures-title">
+        <span>🏛️</span>
+        <span>13 STRUCTURES DE SOUTIEN</span>
+        <span>💰</span>
+      </h2>
+
+      <div class="structures-grid">
+        <!-- NOYAU CENTRAL -->
+        <div class="structure-block noyau">
+          <h3>🏛️ NOYAU CENTRAL</h3>
+          <div class="structure-item">
+            <div class="structure-name">MCA</div>
+            <div class="structure-desc">Accueil & Coordination</div>
+          </div>
+          <div class="structure-item">
+            <div class="structure-name">CCVA</div>
+            <div class="structure-desc">Conseil & Mutualisation</div>
+          </div>
+          <div class="structure-item">
+            <div class="structure-name">Centre Georges Brassens</div>
+            <div class="structure-desc">Animation Quartier</div>
+          </div>
+          <div class="structure-item">
+            <div class="structure-name">LDH</div>
+            <div class="structure-desc">Droits & Éthique</div>
+          </div>
+        </div>
+
+        <!-- FINANCEMENTS PUBLICS -->
+        <div class="structure-block finance">
+          <h3>💰 FINANCEMENTS PUBLICS</h3>
+          <div class="structure-item">
+            <div class="structure-name">Agglo ACSO</div>
+            <div class="structure-desc">Subventions locales</div>
+          </div>
+          <div class="structure-item">
+            <div class="structure-name">Département 60</div>
+            <div class="structure-desc">Aides investissement</div>
+          </div>
+          <div class="structure-item">
+            <div class="structure-name">Préfecture/DDETS</div>
+            <div class="structure-desc">FDVA & FSU</div>
+          </div>
+          <div class="structure-item">
+            <div class="structure-name">CAF Oise</div>
+            <div class="structure-desc">Famille & Enfance</div>
+          </div>
+        </div>
+
+        <!-- ACCOMPAGNEMENT SPÉCIALISÉ -->
+        <div class="structure-block accomp">
+          <h3>🎯 ACCOMPAGNEMENT SPÉCIALISÉ</h3>
+          <div class="structure-item">
+            <div class="structure-name">France Bénévolat</div>
+            <div class="structure-desc">Recrutement bénévoles</div>
+          </div>
+          <div class="structure-item">
+            <div class="structure-name">MAIASO</div>
+            <div class="structure-desc">Conseil juridique</div>
+          </div>
+          <div class="structure-item">
+            <div class="structure-name">UDAFO/SATO</div>
+            <div class="structure-desc">Famille & Addictions</div>
+          </div>
+          <div class="structure-item">
+            <div class="structure-name">CDOS</div>
+            <div class="structure-desc">Sport (Club Sport 60)</div>
+          </div>
+          <div class="structure-item">
+            <div class="structure-name">Maisons Associations</div>
+            <div class="structure-desc">Formations & Ateliers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AGENTS DE LIAISON -->
+    <div class="agents-section">
+      <h2 class="agents-title">🤝 AGENTS DE LIAISON (Interface Humaine)</h2>
+      
+      <div class="agents-grid">
+        <div class="agent-card">
+          <div class="agent-icon">🎭</div>
+          <div class="agent-name">AL Culture</div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">🌱</div>
+          <div class="agent-name">AL Écologie</div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">📚</div>
+          <div class="agent-name">AL Éducation</div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">❤️</div>
+          <div class="agent-name">AL Social/Santé</div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">🤝</div>
+          <div class="agent-name">AL Solidarité</div>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">⚽</div>
+          <div class="agent-name">AL Sport</div>
+        </div>
+      </div>
+
+      <p style="text-align: center; margin-top: 16px; opacity: 0.8;">
+        + 4 AL Transversaux (Financements • Juridique • Bénévolat • Droits)
+      </p>
+
+      <!-- OUTILS TRANSVERSAUX -->
+      <div class="tools-container">
+        <h3 class="tools-title">⚡ OUTILS TRANSVERSAUX (Accessibles partout)</h3>
+        
+        <div class="tools-grid">
+          <!-- CHATBOT -->
+          <button class="tool-btn tool-chatbot">
+            <div class="online-dot"></div>
+            <div class="tool-icon">🤖</div>
+            <div class="tool-label">Chatbot IA</div>
+            <div class="tool-sublabel">24/7</div>
+          </button>
+
+          <!-- AGENDA -->
+          <button class="tool-btn tool-agenda">
+            <div class="tool-icon">📅</div>
+            <div class="tool-label">Agenda</div>
+            <div class="tool-sublabel">Commun</div>
+          </button>
+
+          <!-- VISIO -->
+          <button class="tool-btn tool-visio">
+            <div class="tool-icon">👥</div>
+            <div class="tool-label">Visio</div>
+            <div class="tool-sublabel">Réunions</div>
+          </button>
+
+          <!-- DOCUMENTATION -->
+          <button class="tool-btn tool-docs">
+            <div class="tool-icon">📄</div>
+            <div class="tool-label">Documentation</div>
+            <div class="tool-sublabel">Partagée</div>
+          </button>
+
+          <!-- BÉNÉVOLES -->
+          <div style="position: relative;">
+            <button class="tool-btn tool-benevole" onclick="toggleBenevoleMenu(event)">
+              <div class="tool-icon">👤</div>
+              <div class="tool-label">Bénévoles</div>
+              <div class="tool-sublabel">Gestion</div>
+            </button>
+            <div id="benevole-menu" class="benevole-menu">
+              <div class="benevole-option">
+                <span style="font-size: 1.5rem;">✅</span>
+                <div>
+                  <div style="font-weight: 700;">Devenir bénévole</div>
+                  <div style="font-size: 0.8rem; opacity: 0.8;">Je m'inscris</div>
+                </div>
+              </div>
+              <div class="benevole-option">
+                <span style="font-size: 1.5rem;">📋</span>
+                <div>
+                  <div style="font-weight: 700;">Liste des bénévoles</div>
+                  <div style="font-size: 0.8rem; opacity: 0.8;">Voir les profils</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 16px; color: #fbbf24; font-size: 0.9rem;">
+          💡 Ces outils sont accessibles depuis n'importe quelle catégorie
+        </p>
+      </div>
+    </div>
+
+    <!-- CATÉGORIES D'ASSOCIATIONS -->
+    <div class="categories-grid">
+      <!-- CULTURE -->
+      <div class="category-card cat-culture" onclick="toggleCategory('culture')">
+        <div class="category-header">
+          <div class="category-info">
+            <div class="category-icon">🎭</div>
+            <div>
+              <div class="category-name">Culture</div>
+              <div class="category-count">60 associations</div>
+            </div>
+          </div>
+          <span id="arrow-culture" style="font-size: 1.5rem;">▼</span>
+        </div>
+
+        <div class="category-tools">
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">📅</div>
+            <div>Agenda</div>
+          </button>
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">👥</div>
+            <div>Visio</div>
+          </button>
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">📄</div>
+            <div>Docs</div>
+          </button>
+          <button class="cat-tool-btn chatbot-special">
+            <div class="cat-tool-icon">🤖</div>
+            <div>Chatbot</div>
+          </button>
+        </div>
+
+        <div id="list-culture" class="associations-list">
+          <div class="association-item">
+            <div class="asso-name">Théâtre Municipal</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <div class="association-item">
+            <div class="asso-name">Conservatoire Musique & Danse</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <div class="association-item">
+            <div class="asso-name">Arts Plastiques Creil</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <p style="text-align: center; margin-top: 12px; opacity: 0.8;">
+            ... et 57 autres associations culturelles
+          </p>
+        </div>
+      </div>
+
+      <!-- ÉCOLOGIE -->
+      <div class="category-card cat-ecologie" onclick="toggleCategory('ecologie')">
+        <div class="category-header">
+          <div class="category-info">
+            <div class="category-icon">🌱</div>
+            <div>
+              <div class="category-name">Écologie</div>
+              <div class="category-count">30 associations</div>
+            </div>
+          </div>
+          <span id="arrow-ecologie" style="font-size: 1.5rem;">▼</span>
+        </div>
+
+        <div class="category-tools">
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">📅</div>
+            <div>Agenda</div>
+          </button>
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">👥</div>
+            <div>Visio</div>
+          </button>
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">📄</div>
+            <div>Docs</div>
+          </button>
+          <button class="cat-tool-btn chatbot-special">
+            <div class="cat-tool-icon">🤖</div>
+            <div>Chatbot</div>
+          </button>
+        </div>
+
+        <div id="list-ecologie" class="associations-list">
+          <div class="association-item">
+            <div class="asso-name">Jardins Partagés de Creil</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <div class="association-item">
+            <div class="asso-name">AU5V (Vélo)</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <p style="text-align: center; margin-top: 12px; opacity: 0.8;">
+            ... et 28 autres associations écologiques
+          </p>
+        </div>
+      </div>
+
+      <!-- ÉDUCATION -->
+      <div class="category-card cat-education" onclick="toggleCategory('education')">
+        <div class="category-header">
+          <div class="category-info">
+            <div class="category-icon">📚</div>
+            <div>
+              <div class="category-name">Éducation</div>
+              <div class="category-count">50 associations</div>
+            </div>
+          </div>
+          <span id="arrow-education" style="font-size: 1.5rem;">▼</span>
+        </div>
+
+        <div class="category-tools">
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">📅</div>
+            <div>Agenda</div>
+          </button>
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">👥</div>
+            <div>Visio</div>
+          </button>
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">📄</div>
+            <div>Docs</div>
+          </button>
+          <button class="cat-tool-btn chatbot-special">
+            <div class="cat-tool-icon">🤖</div>
+            <div>Chatbot</div>
+          </button>
+        </div>
+
+        <div id="list-education" class="associations-list">
+          <div class="association-item">
+            <div class="asso-name">APRES (Soutien Scolaire)</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <div class="association-item">
+            <div class="asso-name">Formation Continue</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <p style="text-align: center; margin-top: 12px; opacity: 0.8;">
+            ... et 48 autres associations éducatives
+          </p>
+        </div>
+      </div>
+
+      <!-- SOCIAL/SANTÉ -->
+      <div class="category-card cat-social" onclick="toggleCategory('social')">
+        <div class="category-header">
+          <div class="category-info">
+            <div class="category-icon">❤️</div>
+            <div>
+              <div class="category-name">Social/Santé</div>
+              <div class="category-count">70 associations</div>
+            </div>
+          </div>
+          <span id="arrow-social" style="font-size: 1.5rem;">▼</span>
+        </div>
+
+        <div class="category-tools">
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">📅</div>
+            <div>Agenda</div>
+          </button>
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">👥</div>
+            <div>Visio</div>
+          </button>
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">📄</div>
+            <div>Docs</div>
+          </button>
+          <button class="cat-tool-btn chatbot-special">
+            <div class="cat-tool-icon">🤖</div>
+            <div>Chatbot</div>
+          </button>
+        </div>
+
+        <div id="list-social" class="associations-list">
+          <div class="association-item">
+            <div class="asso-name">A Domicile 60</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <div class="association-item">
+            <div class="asso-name">AFD 60 (Diabète)</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <p style="text-align: center; margin-top: 12px; opacity: 0.8;">
+            ... et 68 autres associations sociales/santé
+          </p>
+        </div>
+      </div>
+
+      <!-- SOLIDARITÉ -->
+      <div class="category-card cat-solidarite" onclick="toggleCategory('solidarite')">
+        <div class="category-header">
+          <div class="category-info">
+            <div class="category-icon">🤝</div>
+            <div>
+              <div class="category-name">Solidarité</div>
+              <div class="category-count">80 associations</div>
+            </div>
+          </div>
+          <span id="arrow-solidarite" style="font-size: 1.5rem;">▼</span>
+        </div>
+
+        <div class="category-tools">
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">📅</div>
+            <div>Agenda</div>
+          </button>
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">👥</div>
+            <div>Visio</div>
+          </button>
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">📄</div>
+            <div>Docs</div>
+          </button>
+          <button class="cat-tool-btn chatbot-special">
+            <div class="cat-tool-icon">🤖</div>
+            <div>Chatbot</div>
+          </button>
+        </div>
+
+        <div id="list-solidarite" class="associations-list">
+          <div class="association-item">
+            <div class="asso-name">Secours Populaire</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <div class="association-item">
+            <div class="asso-name">Emergence Sud Oise</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <p style="text-align: center; margin-top: 12px; opacity: 0.8;">
+            ... et 78 autres associations solidaires
+          </p>
+        </div>
+      </div>
+
+      <!-- SPORT -->
+      <div class="category-card cat-sport" onclick="toggleCategory('sport')">
+        <div class="category-header">
+          <div class="category-info">
+            <div class="category-icon">⚽</div>
+            <div>
+              <div class="category-name">Sport</div>
+              <div class="category-count">62 associations</div>
+            </div>
+          </div>
+          <span id="arrow-sport" style="font-size: 1.5rem;">▼</span>
+        </div>
+
+        <div class="category-tools">
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">📅</div>
+            <div>Agenda</div>
+          </button>
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">👥</div>
+            <div>Visio</div>
+          </button>
+          <button class="cat-tool-btn">
+            <div class="cat-tool-icon">📄</div>
+            <div>Docs</div>
+          </button>
+          <button class="cat-tool-btn chatbot-special">
+            <div class="cat-tool-icon">🤖</div>
+            <div>Chatbot</div>
+          </button>
+        </div>
+
+        <div id="list-sport" class="associations-list">
+          <div class="association-item">
+            <div class="asso-name">ACBB (Basket)</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <div class="association-item">
+            <div class="asso-name">Football Club Creil</div>
+            <div class="asso-actions">
+              <button class="asso-action-btn" title="Agenda">📅</button>
+              <button class="asso-action-btn" title="Contact">✉️</button>
+            </div>
+          </div>
+          <p style="text-align: center; margin-top: 12px; opacity: 0.8;">
+            ... et 60 autres associations sportives
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle structures
+    function toggleStructures() {
+      const structures = document.getElementById('structures');
+      const toggleText = document.getElementById('toggle-text');
+      
+      if (structures.classList.contains('active')) {
+        structures.classList.remove('active');
+        toggleText.textContent = '📊 Afficher les 13 structures de soutien';
+      } else {
+        structures.classList.add('active');
+        toggleText.textContent = '❌ Masquer les structures';
+      }
+    }
+
+    // Toggle catégories
+    function toggleCategory(category) {
+      const list = document.getElementById('list-' + category);
+      const arrow = document.getElementById('arrow-' + category);
+      
+      if (list.classList.contains('active')) {
+        list.classList.remove('active');
+        arrow.textContent = '▼';
+      } else {
+        list.classList.add('active');
+        arrow.textContent = '▲';
+      }
+    }
+
+    // Toggle menu bénévole
+    function toggleBenevoleMenu(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('benevole-menu');
+      menu.classList.toggle('active');
+    }
+
+    // Fermer menu bénévole en cliquant ailleurs
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById('benevole-menu');
+      if (!event.target.closest('.tool-benevole')) {
+        menu.classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>

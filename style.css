@@ -1,0 +1,420 @@
+:root {
+  --bg-gradient: linear-gradient(145deg, #b3127d, #ff4f7b, #ff8a3d, #ff3de1);
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --card-radius: 24px;
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
+  --text-white: #ffffff;
+  --text-muted: #f4e9ff;
+  --primary: #ff3de1;
+  --primary-soft: #ff8aef;
+  --accent-orange: #ff9f3d;
+  --accent-blue: #2f7bff;
+  --accent-green: #12b886;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text-white);
+}
+
+.app-bg {
+  min-height: 100vh;
+  background: var(--bg-gradient);
+}
+
+.app-shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* HEADER LOGOS */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.app-header img {
+  max-height: 60px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* TITRES */
+
+.page-title {
+  text-align: center;
+  margin: 8px 0 24px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.section-title {
+  font-size: 1.3rem;
+  margin: 12px 0;
+}
+
+/* CARTES GÉNÉRIQUES */
+
+.content-card,
+.hero-card {
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 20px;
+}
+
+.gradient-card {
+  background: radial-gradient(circle at top left, #ffdd7b, #ff3de1 60%, #7b1fff);
+}
+
+/* VIDÉO */
+
+.hero-video-wrapper {
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-video {
+  width: 100%;
+  display: block;
+}
+
+/* HERO INDEX */
+
+.hero-title {
+  text-align: center;
+  margin: 8px 0;
+  font-size: 1.6rem;
+}
+
+.hero-text {
+  text-align: center;
+  margin: 0 0 16px;
+  color: var(--text-muted);
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #8f2fff, #ff3de1);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* SERVICES GRID */
+
+.services-grid-wrapper {
+  margin-top: 12px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(110px, auto);
+  grid-gap: 16px;
+}
+
+.service-card {
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff7043, #ff3d7b);
+  padding: 16px;
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-card .service-icon {
+  font-size: 2.1rem;
+  margin-bottom: 6px;
+}
+
+.service-card .service-label {
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Couleurs par service (facultatif) */
+
+.service-associations {
+  background: linear-gradient(135deg, #12b886, #00bcd4);
+}
+
+.service-consultation {
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+}
+
+.service-reclamation {
+  background: linear-gradient(135deg, #ff9800, #ff3d00);
+}
+
+.service-logement {
+  background: linear-gradient(135deg, #ff6f61, #ff3d7b);
+}
+
+/* BOUTON PROGRAMME AU MILIEU */
+
+.programme-card {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 32px;
+  background: linear-gradient(90deg, #8f2fff, #ff3de1);
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+  color: #fff;
+}
+
+.programme-logo img {
+  height: 52px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 4px 10px;
+}
+
+.programme-title {
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.programme-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* NAV / LIENS */
+
+.nav-links {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.back-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* RECHERCHE + CHATBOT */
+
+.search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: stretch;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  flex: 1 1 240px;
+  border-radius: 999px;
+  padding: 10px 16px;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.chatbot-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.chatbot-icon {
+  font-size: 1.8rem;
+}
+
+.filters-row {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.filters-row select {
+  border-radius: 999px;
+  padding: 6px 10px;
+  border: none;
+  outline: none;
+}
+
+/* LISTE ASSOCIATIONS */
+
+.associations-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.assoc-card {
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.assoc-name {
+  font-weight: 600;
+}
+
+.assoc-category {
+  font-size: 0.85rem;
+  color: var(--primary-soft);
+}
+
+.assoc-address {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.assoc-link {
+  margin-top: 4px;
+  font-size: 0.9rem;
+}
+
+.assoc-link a {
+  color: #ffd86e;
+  text-decoration: none;
+}
+
+.assoc-link a:hover {
+  text-decoration: underline;
+}
+
+/* FICHE ASSOCIATION */
+
+.assoc-contact {
+  color: var(--text-muted);
+}
+
+.actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-secondary {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  text-decoration: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.btn-secondary.primary {
+  background: linear-gradient(90deg, #8f2fff, #ff3de1);
+}
+
+.info-text {
+  color: var(--text-muted);
+}
+
+/* LEGAL */
+
+.legal-block {
+  margin-top: 16px;
+  font-size: 0.85rem;
+}
+
+.legal-block a {
+  color: #ffd86e;
+}
+
+.legal-text {
+  color: var(--text-muted);
+}
+
+/* PROGRAMME LIST */
+
+.programme-list {
+  padding-left: 20px;
+}
+/* FICHE ASSOCIATION – ESPACEMENT BOUTONS */
+#assoc-actions {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  .programme-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-header img {
+    max-height: 48px;
+  }
+}
+
+
+/* ❌ MASQUER LOGO VILLE DE CREIL */
+.logo-right {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* 🎯 FORCER CENTRAGE HEADER */
+.app-header {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}

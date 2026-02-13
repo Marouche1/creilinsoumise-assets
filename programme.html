@@ -1,0 +1,358 @@
+<!-- Fichier : programme.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Programme de Creil l'insoumise</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <script defer src="../../js/app.js"></script>
+  <style>
+    /* Titre "Programme" centré */
+    .section-title {
+      text-align: center;
+      margin: 24px 0 16px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Grille d'octogones – plus compacte */
+    .octagon-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Style des octogones – plus petit et bordure dorée renforcée */
+    .octagon-btn {
+      aspect-ratio: 1 / 1;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      border: 3px solid #FFD700;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s ease;
+      line-height: 1.2;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.3);
+
+      clip-path: polygon(
+        25% 0%, 75% 0%,
+        100% 25%, 100% 75%,
+        75% 100%, 25% 100%,
+        0% 75%, 0% 25%
+      );
+
+      background: linear-gradient(135deg, #8e2de2, #ff3d7b);
+      box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.35),
+        inset 0 0 8px rgba(255, 215, 0, 0.25);
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .octagon-btn:hover {
+      transform: scale(1.02) translateY(-2px);
+      box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.4),
+        inset 0 0 14px rgba(255, 215, 0, 0.35);
+    }
+
+    .octagon-btn:active {
+      transform: scale(0.98) translateY(0);
+      box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.3),
+        inset 0 0 6px rgba(255, 215, 0, 0.2);
+    }
+
+    .team-octagon-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      .octagon-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .octagon-btn {
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .octagon-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .octagon-btn {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+
+<style>
+/* 🎨 HEADER CENTRÉ AVEC EFFETS SPÉCIAUX */
+.app-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 24px;
+  position: relative;
+  min-height: 180px;
+}
+
+/* ❌ MASQUER LOGO VILLE */
+.logo-right {
+  display: none !important;
+}
+
+/* 🌟 Conteneur pour particules */
+.logo-left {
+  position: relative;
+  width: 140px !important;
+  height: 140px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+  padding: 12px !important;
+  z-index: 10;
+  
+  /* 💫 Ombre lumineuse pulsante */
+  box-shadow: 
+    0 0 40px rgba(255, 45, 111, 0.5),
+    0 0 80px rgba(138, 43, 226, 0.4),
+    0 10px 40px rgba(0, 0, 0, 0.2) !important;
+  
+  animation: pulse-glow 3s ease-in-out infinite !important;
+}
+
+/* 🌈 Bordure arc-en-ciel animée */
+.logo-left::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    #ff2d6f,
+    #8a2be2,
+    #ff6a00,
+    #ff2d6f
+  );
+  background-size: 300% 300%;
+  z-index: -1;
+  animation: gradient-rotate 6s linear infinite;
+}
+
+.logo-left img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) !important;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-left:hover img {
+  transform: scale(1.08) rotate(8deg);
+}
+
+/* 🎆 PARTICULES LUMINEUSES */
+.logo-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: float-particle 4s ease-in-out infinite;
+}
+
+.logo-particle::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, currentColor 0%, transparent 70%);
+  filter: blur(2px);
+}
+
+/* Positions des 8 particules */
+.logo-particle:nth-child(1) { color: #ff2d6f; animation-delay: 0s; left: 50%; top: -10px; }
+.logo-particle:nth-child(2) { color: #8a2be2; animation-delay: 0.5s; left: calc(100% + 5px); top: 15%; }
+.logo-particle:nth-child(3) { color: #ff6a00; animation-delay: 1s; left: calc(100% + 10px); top: 50%; }
+.logo-particle:nth-child(4) { color: #00d4ff; animation-delay: 1.5s; left: calc(100% + 5px); top: 85%; }
+.logo-particle:nth-child(5) { color: #ff2d6f; animation-delay: 2s; left: 50%; top: calc(100% + 10px); }
+.logo-particle:nth-child(6) { color: #8a2be2; animation-delay: 2.5s; left: -10px; top: 85%; }
+.logo-particle:nth-child(7) { color: #ff6a00; animation-delay: 3s; left: -15px; top: 50%; }
+.logo-particle:nth-child(8) { color: #00d4ff; animation-delay: 3.5s; left: -10px; top: 15%; }
+
+/* 🌈 Animations */
+@keyframes gradient-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 40px rgba(255, 45, 111, 0.5),
+      0 0 80px rgba(138, 43, 226, 0.4),
+      0 10px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 
+      0 0 60px rgba(255, 45, 111, 0.7),
+      0 0 120px rgba(138, 43, 226, 0.6),
+      0 15px 50px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes float-particle {
+  0% { opacity: 0; transform: translate(0, 0) scale(0); }
+  10% { opacity: 1; transform: translate(0, 0) scale(1); }
+  50% { 
+    opacity: 0.8;
+    transform: translate(
+      calc(var(--px, 0) * 15px),
+      calc(var(--py, 0) * 15px)
+    ) scale(1.2);
+  }
+  100% { 
+    opacity: 0;
+    transform: translate(
+      calc(var(--px, 0) * 30px),
+      calc(var(--py, 0) * 30px)
+    ) scale(0.5);
+  }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .logo-left { width: 110px !important; height: 110px !important; }
+  .logo-particle { width: 6px; height: 6px; }
+}
+
+@media (max-width: 520px) {
+  .logo-left { width: 90px !important; height: 90px !important; }
+  .logo-particle { width: 5px; height: 5px; }
+}
+</style>
+
+<script>
+// 🎆 Génération des particules autour du logo
+(function() {
+  function addParticles() {
+    const logos = document.querySelectorAll('.logo-left');
+    
+    logos.forEach(logo => {
+      // Ne pas dupliquer
+      if (logo.querySelector('.logo-particle')) return;
+      
+      // 8 particules autour du logo
+      for (let i = 0; i < 8; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'logo-particle';
+        
+        // Direction selon angle
+        const angle = (i * 45) * (Math.PI / 180);
+        particle.style.setProperty('--px', Math.cos(angle).toFixed(2));
+        particle.style.setProperty('--py', Math.sin(angle).toFixed(2));
+        
+        logo.appendChild(particle);
+      }
+    });
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addParticles);
+  } else {
+    addParticles();
+  }
+})();
+</script>
+
+</head>
+<body class="app-bg">
+  <div class="app-shell">
+
+    <header class="app-header">
+      <div class="logo-left">
+        <img src="../../images/logo-creil-insoumise.png" alt="Creil l'insoumise" />
+      </div>
+    </header>
+
+    <main>
+      <h1 class="page-title">Programme de Creil l'insoumise</h1>
+
+      <section class="content-card gradient-card">
+        <div class="hero-video-wrapper">
+          <video class="hero-video" controls playsinline preload="metadata">
+            <source src="Video/explication du bouton programme/explication espace programme.mp4" type="video/mp4" />
+            Votre navigateur ne supporte pas la vidéo.
+          </video>
+        </div>
+
+        <!-- BOUTON "ÉQUIPE CREIL L'INSOUMISE" -->
+        <div class="team-octagon-wrapper">
+          <a href="bouton_equipe/equipe.html" class="octagon-btn" style="background-image: url('/boutons_services/programme/image/equipe_creil_insoumise/equipe_linsoumise.jpg');">
+            Équipe Creil l'insoumise
+          </a>
+        </div>
+
+        <h2 class="section-title">Programme</h2>
+
+        <!-- GRILLE DES OCTOGONES — CHEMINS CORRIGÉS (minuscules, relatifs) -->
+        <div class="octagon-grid">
+          <a class="octagon-btn" href="bouton_logement/index.html" style="background-image: url('/boutons_services/programme/image/programme_detail/logement.jpg');">Logement</a>
+          <a class="octagon-btn" href="service.html?type=reclamation" style="background-image: url('/boutons_services/programme/image/programme_detail/reclamation_citoyenne.jpg');">Réclamation citoyenne</a>
+          <a class="octagon-btn" href="association_page_1.html" style="background-image: url('/boutons_services/programme/image/programme_detail/cohesion_sociale.jpg');">Cohésion sociale et solidarité</a>
+          <a class="octagon-btn" href="bouton_consultation_citoyenne/index.html" style="background-image: url('/boutons_services/programme/image/programme_detail/consultation_citoyenne.jpg');">Consultation citoyenne</a>
+          <a class="octagon-btn" href="bouton_jeunesse/index.html" style="background-image: url('/boutons_services/programme/image/programme_detail/jeunesse.jpg');">Jeunesse</a>
+          <a class="octagon-btn" href="culture.html" style="background-image: url('/boutons_services/programme/image/programme_detail/culture.jpg');">Culture</a>
+          <a class="octagon-btn" href="3mois_3priorites.html" style="background-image: url('/boutons_services/programme/image/programme_detail/3mois_3priorites.jpg');">3 mois 3 priorités trois actions</a>
+          <a class="octagon-btn" href="developpement_economique.html" style="background-image: url('/boutons_services/programme/image/programme_detail/developpement_economique.jpg');">Développement économique</a>
+          <a class="octagon-btn" href="emploi.html" style="background-image: url('/boutons_services/programme/image/programme_detail/emploi.jpg');">Emploi</a>
+          <a class="octagon-btn" href="enfance.html" style="background-image: url('/boutons_services/programme/image/programme_detail/enfance.jpg');">Enfance</a>
+          <a class="octagon-btn" href="transition_ecologique.html" style="background-image: url('/boutons_services/programme/image/programme_detail/transition_ecologique.jpg');">La transition écologique</a>
+          <a class="octagon-btn" href="Le_sport.html" style="background-image: url('/boutons_services/programme/image/programme_detail/le_sport.jpg');">Le sport</a>
+          <a class="octagon-btn" href="securite_publique.html" style="background-image: url('/boutons_services/programme/image/programme_detail/securite_publique.jpg');">Sécurité et tranquillité publique</a>
+          <a class="octagon-btn" href="association_page_1" style="background-image: url('/boutons_services/programme/image/programme_detail/vie_associative.jpg');">Vie associative</a>
+          <a class="octagon-btn" href="numerique.html" style="background-image: url('/boutons_services/programme/image/programme_detail/numerique.jpg');">Numérique</a>
+          <a class="octagon-btn" href="famille.html" style="background-image: url('/boutons_services/programme/image/programme_detail/famille.jpg');">Famille</a>
+          <a class="octagon-btn" href="handicap.html" style="background-image: url('/boutons_services/programme/image/programme_detail/handicap.jpg');">Handicap</a>
+          <a class="octagon-btn" href="intercommunalite_forte.html" style="background-image: url('/boutons_services/programme/image/programme_detail/intercommunalite_forte.jpg');">Une intercommunalité forte</a>
+          <a class="octagon-btn" href="budget_fiscalite.html" style="background-image: url('/boutons_services/programme/image/programme_detail/budget_fiscalite.jpg');">Budget et fiscalité</a>
+          <a class="octagon-btn" href="calendrier_reunions.html" style="background-image: url('/boutons_services/programme/image/programme_detail/calendrier_reunions.jpg');">Calendrier de nos réunions publiques</a>
+        </div>
+
+        <div class="nav-links" style="margin-top: 30px; justify-content: center;">
+          <a href="../../services.html" class="back-link">← Retour aux services</a>
+        </div>
+      </section>
+    </main>
+
+  </div>
+</body>
+</html>

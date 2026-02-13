@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Système Associatif de Creil - Accueil</title>
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(145deg, #b3127d, #ff4f7b, #ff8a3d, #ff3de1);
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --card-radius: 24px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
+      --text-white: #ffffff;
+      --text-muted: #f4e9ff;
+      --primary: #ff3de1;
+      --primary-soft: #ff8aef;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-white);
+      background: var(--bg-gradient);
+      min-height: 100vh;
+    }
+
+    .app-shell {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* HEADER - LOGO CENTRÉ */
+    .app-header {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .logo-wrapper img {
+      max-height: 80px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 12px 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeIn 1s ease-out 0.3s forwards;
+    }
+
+    .hero-card {
+      background: var(--card-bg);
+      border-radius: var(--card-radius);
+      padding: 32px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-video-wrapper {
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-video {
+      width: 100%;
+      display: block;
+    }
+
+    .hero-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      line-height: 1.2;
+    }
+
+    .hero-text {
+      text-align: center;
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    /* SECTION CHIFFRES CLÉS - GRADIENT JAUNE/ORANGE VISIBLE */
+    .stats-section {
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: slideUp 0.8s ease-out 0.5s forwards;
+    }
+
+    .stats-card {
+      background: var(--card-bg);
+      border-radius: var(--card-radius);
+      padding: 40px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 32px;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffd700, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    .stat-label {
+      font-size: 1.2rem;
+      color: var(--text-white);
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .stat-sublabel {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    /* SECTION BOUTONS (9 BOUTONS) */
+    .actions-section {
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: slideUp 0.8s ease-out 0.7s forwards;
+    }
+
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .action-btn {
+      background: linear-gradient(135deg, #ff7043, #ff3d7b);
+      border-radius: 24px;
+      padding: 32px 24px;
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border: none;
+    }
+
+    .action-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .action-btn:hover::before {
+      left: 100%;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .action-icon {
+      font-size: 3.5rem;
+    }
+
+    .action-label {
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .action-sublabel {
+      font-size: 1rem;
+      opacity: 0.9;
+      text-align: center;
+    }
+
+    /* Couleurs boutons */
+    .btn-citoyen { background: linear-gradient(135deg, #2f7bff, #8f2fff); }
+    .btn-nouvelle-asso { background: linear-gradient(135deg, #12b886, #00bcd4); }
+    .btn-asso-existante { background: linear-gradient(135deg, #ff9800, #ff3d00); }
+    .btn-benevole { background: linear-gradient(135deg, #ff6f61, #ff3d7b); }
+    .btn-financeur { background: linear-gradient(135deg, #ffd700, #ff8c00); }
+    .btn-elu { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+    .btn-agenda { background: linear-gradient(135deg, #12b886, #00bcd4); }
+    .btn-chatbot { background: linear-gradient(135deg, #8e2de2, #4a00e0); position: relative; }
+    .btn-sos { 
+      background: linear-gradient(135deg, #dc2626, #ff3d00);
+      grid-column: span 2;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .btn-chatbot .online-indicator {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 14px;
+      height: 14px;
+      background: #12b886;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    /* MODAL DÉTAILS */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .modal.active {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: linear-gradient(145deg, #1a1a2e, #16213e);
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 900px;
+      width: 100%;
+      margin: 40px auto;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+      position: relative;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-close:hover {
+      background: rgba(255,255,255,0.2);
+      transform: rotate(90deg);
+    }
+
+    .modal-video {
+      width: 100%;
+      border-radius: 16px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .modal-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .modal-text {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .modal-section {
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .modal-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .modal-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .modal-section li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .modal-section li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #12b886;
+      font-weight: bold;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 16px 32px;
+      background: linear-gradient(90deg, #8f2fff, #ff3de1);
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      margin: 8px;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 50px rgba(255, 61, 225, 0.5);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { 
+        opacity: 1; 
+        transform: scale(1); 
+        box-shadow: 0 0 0 0 rgba(18, 184, 134, 0.7);
+      }
+      50% { 
+        opacity: 0.7; 
+        transform: scale(1.2); 
+        box-shadow: 0 0 0 10px rgba(18, 184, 134, 0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2rem; }
+      .hero-text { font-size: 1.1rem; }
+      .section-title { font-size: 1.6rem; }
+      .stat-number { font-size: 2.5rem; }
+      .logo-wrapper img { max-height: 60px; }
+      .btn-sos {
+        grid-column: span 1;
+        flex-direction: column;
+      }
+      .modal-content {
+        padding: 24px;
+        margin: 20px;
+      }
+      .modal-title {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .actions-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- HEADER - LOGO CENTRÉ -->
+    <header class="app-header">
+      <div class="logo-wrapper">
+        <img src="https://via.placeholder.com/250x100/b3127d/ffffff?text=Creil+l%27Insoumise" alt="Creil l'Insoumise">
+      </div>
+    </header>
+
+    <!-- HERO SECTION - VIDÉO + TEXTE -->
+    <section class="hero-section">
+      <div class="hero-card">
+        <div class="hero-video-wrapper">
+          <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo.
+          </video>
+        </div>
+        
+        <h1 class="hero-title">
+          🏛️ Système Associatif de Creil
+        </h1>
+        
+        <p class="hero-text">
+          Ensemble, faisons vivre nos associations<br>
+          Une plateforme intelligente pour connecter, soutenir et développer
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION CHIFFRES CLÉS -->
+    <section class="stats-section">
+      <div class="stats-card">
+        <h2 class="section-title">📊 La Vie Associative à Creil</h2>
+        
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">352</div>
+            <div class="stat-label">ASSOCIATIONS</div>
+            <div class="stat-sublabel">Actives et dynamiques</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number">13</div>
+            <div class="stat-label">STRUCTURES</div>
+            <div class="stat-sublabel">De soutien</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number">6</div>
+            <div class="stat-label">DOMAINES</div>
+            <div class="stat-sublabel">D'activité</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number">5000+</div>
+            <div class="stat-label">BÉNÉVOLES</div>
+            <div class="stat-sublabel">Engagés</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number">1200+</div>
+            <div class="stat-label">ÉVÉNEMENTS</div>
+            <div class="stat-sublabel">Par an</div>
+          </div>
+
+          <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">CHATBOT IA</div>
+            <div class="stat-sublabel">Toujours disponible</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9 BOUTONS -->
+    <section class="actions-section">
+      <div class="actions-grid">
+        <!-- 1. CITOYEN -->
+        <button class="action-btn btn-citoyen" onclick="openModal('citoyen')">
+          <div class="action-icon">👨</div>
+          <div class="action-label">Citoyen</div>
+          <div class="action-sublabel">Découvrir les associations</div>
+        </button>
+
+        <!-- 2. NOUVELLE ASSOCIATION -->
+        <button class="action-btn btn-nouvelle-asso" onclick="openModal('nouvelle-asso')">
+          <div class="action-icon">🆕</div>
+          <div class="action-label">Nouvelle Association</div>
+          <div class="action-sublabel">Créer mon association</div>
+        </button>
+
+        <!-- 3. ASSOCIATION EXISTANTE -->
+        <button class="action-btn btn-asso-existante" onclick="openModal('asso-existante')">
+          <div class="action-icon">✅</div>
+          <div class="action-label">Association Existante</div>
+          <div class="action-sublabel">Explorer les associations</div>
+        </button>
+
+        <!-- 4. BÉNÉVOLE -->
+        <button class="action-btn btn-benevole" onclick="openModal('benevole')">
+          <div class="action-icon">👤</div>
+          <div class="action-label">Bénévole</div>
+          <div class="action-sublabel">Je veux m'engager</div>
+        </button>
+
+        <!-- 5. FINANCEUR -->
+        <button class="action-btn btn-financeur" onclick="openModal('financeur')">
+          <div class="action-icon">💰</div>
+          <div class="action-label">Financeur / Structure</div>
+          <div class="action-sublabel">Soutenir les associations</div>
+        </button>
+
+        <!-- 6. ÉLU -->
+        <button class="action-btn btn-elu" onclick="openModal('elu')">
+          <div class="action-icon">🏛️</div>
+          <div class="action-label">Élu / Agent</div>
+          <div class="action-sublabel">Gouvernance associative</div>
+        </button>
+
+        <!-- 7. AGENDA -->
+        <button class="action-btn btn-agenda" onclick="openModal('agenda')">
+          <div class="action-icon">📅</div>
+          <div class="action-label">Agenda Général</div>
+          <div class="action-sublabel">Événements à venir</div>
+        </button>
+
+        <!-- 8. CHATBOT -->
+        <button class="action-btn btn-chatbot" onclick="openModal('chatbot')">
+          <div class="online-indicator"></div>
+          <div class="action-icon">🤖</div>
+          <div class="action-label">Chatbot IA</div>
+          <div class="action-sublabel">Recherche & Questions</div>
+        </button>
+
+        <!-- 9. SOS -->
+        <a href="tel:0344641076" class="action-btn btn-sos">
+          <div class="action-icon">🆘</div>
+          <div>
+            <div class="action-label">Besoin d'aide ?</div>
+            <div class="action-sublabel">Appeler la MCA • 03 44 64 10 76</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- MODALS (seront peuplées dynamiquement) -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    // Compteurs animés
+    const animateCounter = (element, target) => {
+      let current = 0;
+      const increment = target / 50;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.textContent = target.toString().includes('+') ? target : Math.ceil(target);
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.ceil(current);
+        }
+      }, 30);
+    };
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const number = entry.target.querySelector('.stat-number');
+          const value = number.textContent.replace(/\D/g, '');
+          const hasPlus = number.textContent.includes('+');
+          const hasSlash = number.textContent.includes('/');
+          
+          if (!hasSlash) {
+            animateCounter(number, parseInt(value));
+            if (hasPlus) {
+              setTimeout(() => {
+                number.textContent = value + '+';
+              }, 1500);
+            }
+          }
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.stat-item').forEach(stat => {
+      statsObserver.observe(stat);
+    });
+
+    // Gestion des modals
+    function openModal(type) {
+      const modal = document.getElementById('modal');
+      const modalBody = document.getElementById('modal-body');
+      
+      const content = getModalContent(type);
+      modalBody.innerHTML = content;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Fermer modal en cliquant à l'extérieur
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    function getModalContent(type) {
+      const contents = {
+        'citoyen': `
+          <video class="modal-video" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          </video>
+          <h2 class="modal-title">👨 Découvrir les Associations</h2>
+          <p class="modal-text">
+            Explorez les 352 associations de Creil et trouvez celle qui correspond à vos centres d'intérêt.
+            Que vous cherchiez une activité culturelle, sportive, solidaire ou écologique, notre annuaire 
+            vous guide vers les bonnes personnes.
+          </p>
+
+          <div class="modal-section">
+            <h3>📖 Annuaire des Associations</h3>
+            <ul>
+              <li>352 associations répertoriées</li>
+              <li>Classement par 6 catégories</li>
+              <li>Carte interactive avec géolocalisation</li>
+              <li>Filtres par quartier et public cible</li>
+            </ul>
+            <button class="cta-button">Consulter l'Annuaire</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>💬 Témoignages Citoyens</h3>
+            <video class="modal-video" controls>
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <p class="modal-text" style="font-style: italic;">
+              "J'ai trouvé des amis au club senior" - Marie, 68 ans<br>
+              "Bénévole sport, mes enfants adorent" - Ahmed, 35 ans<br>
+              "J'ai appris la couture grâce à l'asso" - Sophie, 42 ans
+            </p>
+          </div>
+
+          <div class="modal-section">
+            <h3>📊 Impact Social</h3>
+            <video class="modal-video" controls>
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <ul>
+              <li>5000+ bénévoles engagés</li>
+              <li>1200+ événements organisés par an</li>
+              <li>15 000+ citoyens touchés</li>
+              <li>200 emplois créés dans le tissu associatif</li>
+              <li>500 jeunes accompagnés (soutien scolaire, sport...)</li>
+            </ul>
+          </div>
+
+          <div class="modal-section">
+            <h3>🔍 Comment Chercher une Association ?</h3>
+            <ol style="padding-left: 20px;">
+              <li>Définir vos centres d'intérêt</li>
+              <li>Utiliser le chatbot IA pour un conseil personnalisé</li>
+              <li>Consulter l'annuaire par catégorie</li>
+              <li>Filtrer par quartier/public</li>
+              <li>Contacter l'association directement</li>
+              <li>Participer à une réunion découverte</li>
+            </ol>
+            <button class="cta-button">Lancer une Recherche</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>🆕 Comment Créer une Association ?</h3>
+            <p class="modal-text">
+              Vous avez un projet associatif ? Suivez notre guide complet :
+            </p>
+            <ol style="padding-left: 20px;">
+              <li>Vérifier qu'une asso similaire n'existe pas déjà</li>
+              <li>Cliquer sur "Nouvelle Association"</li>
+              <li>Suivre le parcours de création guidé</li>
+              <li>S'inscrire à la formation gratuite</li>
+              <li>Bénéficier de l'accompagnement MCA</li>
+            </ol>
+            <button class="cta-button" onclick="openModal('nouvelle-asso')">Créer mon Association</button>
+          </div>
+        `,
+        
+        'nouvelle-asso': `
+          <video class="modal-video" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          </video>
+          <h2 class="modal-title">🆕 Créer mon Association à Creil</h2>
+          
+          <div class="modal-section" style="background: rgba(255, 200, 0, 0.1); border-left-color: #ffc800;">
+            <h3>❓ Pourquoi Voulez-Vous Créer Cette Association ?</h3>
+            <p class="modal-text">
+              <strong>Réfléchissez à votre motivation profonde :</strong>
+            </p>
+            <ul>
+              <li>Combler un manque identifié sur le territoire ?</li>
+              <li>Rassembler des personnes autour d'une passion ?</li>
+              <li>Agir pour une cause qui vous tient à cœur ?</li>
+              <li>Développer une activité/service manquant ?</li>
+            </ul>
+            <p class="modal-text" style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 8px; margin-top: 16px;">
+              ⚠️ <strong>Question Cruciale :</strong> "Une association existante répond-elle déjà à ce besoin à Creil ?"
+              <br><br>
+              💡 Si oui : Pourquoi ne pas REJOINDRE ou COLLABORER ?<br>
+              Avantages : Mutualisation, réseau, expérience
+            </p>
+            <button class="cta-button">Vérifier dans l'Annuaire (352 assos)</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>🎯 Analyse de Faisabilité</h3>
+            <p class="modal-text"><strong>Questions clés à vous poser :</strong></p>
+            <ol style="padding-left: 20px; line-height: 1.8;">
+              <li><strong>Besoin réel ?</strong> Combien de personnes concernées ? Avez-vous sondé le public ?</li>
+              <li><strong>Ressources humaines ?</strong> Combien de fondateurs motivés ? (min. 3-5)</li>
+              <li><strong>Viabilité financière ?</strong> Budget prévisionnel ? Sources identifiées ?</li>
+              <li><strong>Pérennité ?</strong> Plan d'action sur 3 ans ? Succession assurée ?</li>
+              <li><strong>Valeur ajoutée ?</strong> En quoi votre asso sera différente/meilleure ?</li>
+            </ol>
+            <button class="cta-button">Parler au Chatbot IA (Analyse personnalisée)</button>
+          </div>
+
+          <div class="modal-section" style="background: rgba(18, 184, 134, 0.1); border-left-color: #12b886;">
+            <h3>🎓 ÉTAPE 0 : Formation Gratuite (Recommandé)</h3>
+            <p class="modal-text"><strong>Formation : "Créer et gérer son asso"</strong></p>
+            <ul>
+              <li>📅 Durée : 1 journée (7h)</li>
+              <li>📍 Lieu : MCA, 11 rue des Hironvalles, Creil</li>
+              <li>👥 Animateur : Agent de Liaison + Expert juridique</li>
+            </ul>
+            <p class="modal-text"><strong>Prochaines sessions :</strong></p>
+            <ul>
+              <li>Samedi 22 février 2026 - 9h-17h</li>
+              <li>Samedi 15 mars 2026 - 9h-17h</li>
+              <li>Samedi 12 avril 2026 - 9h-17h</li>
+            </ul>
+            <button class="cta-button">S'inscrire à la Formation</button>
+            <p class="modal-text" style="margin-top: 16px; font-size: 0.95rem;">
+              ✅ Après inscription : Email de confirmation + N° demande #FORM-XXXX
+            </p>
+          </div>
+
+          <div class="modal-section">
+            <h3>✅ Checklist Création</h3>
+            <ol style="padding-left: 20px; line-height: 1.8;">
+              <li>Rédiger les statuts (modèle téléchargeable)</li>
+              <li>Déclarer en préfecture (en ligne ou sur place)</li>
+              <li>Obtenir RNA/SIRET</li>
+              <li>Ouvrir compte bancaire</li>
+              <li>S'inscrire au système Creil</li>
+            </ol>
+            <button class="cta-button">Télécharger le Kit Complet</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>💰 Comment Demander un Financement ?</h3>
+            <ul>
+              <li>Identifier les bons financeurs selon votre domaine</li>
+              <li>Respecter les calendriers (ACSO avant 30 nov, FDVA mars/sept)</li>
+              <li>Préparer un dossier solide (budget, impact, indicateurs)</li>
+              <li>Se faire accompagner gratuitement par l'Agent de Liaison</li>
+            </ul>
+            <button class="cta-button">Voir les Financements Disponibles</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>📞 Besoin d'Aide ?</h3>
+            <p class="modal-text">
+              <strong>Avant d'appeler, préparez :</strong><br>
+              ✅ Votre projet résumé (1 page)<br>
+              ✅ Liste fondateurs (noms, rôles)<br>
+              ✅ Budget prévisionnel estimé<br>
+              ✅ Questions précises notées
+            </p>
+            <p class="modal-text">
+              💡 <strong>Utilisez d'abord le Chatbot IA</strong> (disponible 24/7)<br>
+              Si bloqué, contactez la MCA :
+            </p>
+            <button class="cta-button" onclick="window.location.href='tel:0344641076'">
+              ☎️ Appeler la MCA : 03 44 64 10 76
+            </button>
+          </div>
+        `,
+        
+        'asso-existante': `
+          <video class="modal-video" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          </video>
+          <h2 class="modal-title">✅ Associations de Creil</h2>
+          <p class="modal-text">
+            Découvrez l'ensemble du tissu associatif creillois, réparti en 6 grandes catégories. 
+            Chaque association dispose d'une fiche complète avec vidéo de présentation, contacts, 
+            localisation et événements à venir.
+          </p>
+
+          <div class="modal-section">
+            <h3>📂 Liste par Catégorie</h3>
+            <ul>
+              <li>🎭 Culture & Patrimoine (60 associations)</li>
+              <li>🌱 Écologie & Développement Durable (30 associations)</li>
+              <li>📚 Éducation & Jeunesse (50 associations)</li>
+              <li>❤️ Social, Santé & Handicap (70 associations)</li>
+              <li>🤝 Solidarité & Vie Quotidienne (80 associations)</li>
+              <li>⚽ Sport & Loisirs (62 associations)</li>
+            </ul>
+            <button class="cta-button">Explorer l'Annuaire Complet</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>🔍 Recherche Avancée + Chatbot</h3>
+            <video class="modal-video" controls>
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <p class="modal-text">
+              <strong>Exemples de recherche :</strong><br>
+              🔍 "théâtre jeunes" → 5 résultats<br>
+              🔍 "aide devoirs Rouher" → 3 résultats<br>
+              🗺️ Carte interactive par quartier<br>
+              🎯 Filtres par public (enfants, ados, adultes, seniors)
+            </p>
+            <button class="cta-button">🤖 Chatbot Recherche</button>
+            <button class="cta-button">🔍 Recherche Avancée</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>📌 Exemple de Fiche Association</h3>
+            <p class="modal-text"><strong>Théâtre Municipal de Creil</strong></p>
+            <video class="modal-video" controls style="max-height: 200px;">
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <p class="modal-text">
+              Spectacles tout public, ateliers pour jeunes et adultes, 
+              Festival Les Infaillibles.<br><br>
+              📞 03 44 25 XX XX<br>
+              📧 theatre.creil@ville.fr<br>
+              📱 Facebook | Instagram<br>
+              📍 12 Place François Mitterrand, Creil
+            </p>
+            <button class="cta-button">🗺️ Voir sur la Carte</button>
+          </div>
+        `,
+        
+        'benevole': `
+          <video class="modal-video" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          </video>
+          <h2 class="modal-title">👤 Devenir Bénévole</h2>
+          <p class="modal-text">
+            Rejoignez les 5000+ bénévoles engagés à Creil ! Formation, orientation, 
+            accompagnement et valorisation : tout pour réussir votre engagement.
+          </p>
+
+          <div class="modal-section">
+            <h3>🎯 Orientation (Quiz personnalisé)</h3>
+            <p class="modal-text">
+              Trouvez le bénévolat qui vous correspond :<br>
+              • Centres d'intérêt<br>
+              • Disponibilité (heures/semaine)<br>
+              • Compétences à valoriser<br>
+              → Suggestions personnalisées
+            </p>
+            <button class="cta-button">Faire le Quiz (5 min)</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>📚 Formation Bénévole</h3>
+            <ul>
+              <li>🎓 Parcours d'accueil (2h) : Droits, devoirs, assurance</li>
+              <li>🛠️ Formations thématiques : Gestion projet, animation, communication</li>
+              <li>🚑 Premiers secours (PSC1)</li>
+              <li>📜 Certification "Bénévole qualifié Creil"</li>
+            </ul>
+            <button class="cta-button">Voir le Catalogue Formations</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>🔍 Offres de Bénévolat</h3>
+            <p class="modal-text">
+              Filtres disponibles :<br>
+              • Par catégorie (culture, sport, solidarité...)<br>
+              • Par compétence requise<br>
+              • Par quartier<br>
+              • Ponctuel vs Régulier<br>
+              • 🚨 Missions urgentes
+            </p>
+            <button class="cta-button">Voir les Offres</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>🏆 Valorisation</h3>
+            <ul>
+              <li>Passeport bénévole (traçabilité expérience)</li>
+              <li>Reconnaissance compétences (CV, études)</li>
+              <li>Événement annuel "Merci aux bénévoles"</li>
+              <li>Badges & Points (gamification)</li>
+            </ul>
+          </div>
+        `,
+        
+        'financeur': `
+          <video class="modal-video" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          </video>
+          <h2 class="modal-title">💰 Financeurs & Partenaires</h2>
+
+          <div class="modal-section" style="background: rgba(255, 215, 0, 0.1); border-left-color: #ffd700;">
+            <h3>👤 Citoyens : Vous aussi pouvez aider !</h3>
+            <p class="modal-text"><strong>💰 Don financier</strong></p>
+            <ul>
+              <li>66% de réduction d'impôt</li>
+              <li>Don 100€ = coût réel 34€</li>
+              <li>Don ponctuel ou mensuel</li>
+            </ul>
+            <p class="modal-text"><strong>🎁 Legs & Donations</strong></p>
+            <ul>
+              <li>Léguer à une association dans votre testament</li>
+              <li>Exonération totale droits de succession</li>
+              <li>Transmission de votre engagement</li>
+            </ul>
+            <p class="modal-text"><strong>📦 Don matériel</strong></p>
+            <ul>
+              <li>Matériel de bureau, équipements sportifs</li>
+              <li>Instruments de musique, livres, jeux</li>
+              <li>Véhicules (sous conditions)</li>
+            </ul>
+            <button class="cta-button">Je veux Soutenir une Asso</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>🏛️ Financeurs Publics</h3>
+            <ul>
+              <li>Agglo Creil Sud Oise (ACSO)</li>
+              <li>Département de l'Oise</li>
+              <li>Préfecture / DDETS (FDVA)</li>
+              <li>CAF de l'Oise</li>
+              <li>Région Hauts-de-France</li>
+            </ul>
+            <button class="cta-button">Voir Critères & Calendriers</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>🌟 Entreprises Engagées</h3>
+            <p class="modal-text">
+              <strong>🏆 Entreprise A (PME locale)</strong><br>
+              💰 Soutien : 5000€/an depuis 3 ans<br>
+              🎯 5 associations sport jeunes aidées
+            </p>
+            <video class="modal-video" controls style="max-height: 200px;">
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <p class="modal-text" style="font-style: italic;">
+              "150 jeunes ont pu pratiquer le foot gratuitement grâce à Entreprise A"
+            </p>
+            <p class="modal-text">
+              💬 "Notoriété locale +40%, fierté salariés, meilleur recrutement !"
+            </p>
+            <button class="cta-button">Devenir Mécène</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>💡 Pourquoi Devenir Mécène ?</h3>
+            <ul>
+              <li>🎁 Réduction fiscale 60% (PME) ou 66%</li>
+              <li>📣 Visibilité locale & régionale</li>
+              <li>🤝 Impact social mesurable</li>
+              <li>🏅 Label "Entreprise citoyenne"</li>
+              <li>📊 Bilan annuel d'impact personnalisé</li>
+            </ul>
+          </div>
+        `,
+        
+        'elu': `
+          <video class="modal-video" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          </video>
+          <h2 class="modal-title">🏛️ Espace Élu - Gouvernance Associative</h2>
+          
+          <div style="text-align: center; padding: 24px; background: rgba(255,255,255,0.05); border-radius: 16px; margin-bottom: 24px;">
+            <div style="width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #8f2fff, #ff3de1); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+              👤
+            </div>
+            <h3 style="color: #fff; margin-bottom: 8px;">[Votre Nom]</h3>
+            <p style="color: var(--text-muted); margin-bottom: 8px;">Élu délégué à la Vie Associative</p>
+            <p style="color: var(--text-muted); font-size: 1.1rem; font-style: italic;">
+              "Je fais le lien entre le monde associatif et la mairie.<br>
+              Coordination • Orientation • Médiation • Représentation"
+            </p>
+          </div>
+
+          <div class="modal-section">
+            <h3>📊 Schéma de Gouvernance</h3>
+            <p class="modal-text" style="text-align: center; line-height: 2;">
+              <strong style="font-size: 1.2rem;">MONDE ASSOCIATIF (352 assos)</strong><br>
+              🎭 🌱 📚 ❤️ 🤝 ⚽<br>
+              ⬇️<br>
+              <strong style="font-size: 1.3rem; color: #ff3de1;">ÉLU VIE ASSOCIATIVE</strong><br>
+              <em>🔗 LIEN & COORDINATION</em><br>
+              ⬇️<br>
+              <strong style="font-size: 1.2rem;">MAIRIE</strong><br>
+              Élus thématiques & Services<br>
+              Culture | Environnement | Jeunesse | Social | Sport
+            </p>
+          </div>
+
+          <div class="modal-section">
+            <h3>💼 Mon Rôle Précis</h3>
+            <ul>
+              <li><strong>🔗 LIEN :</strong> Porter la voix associative, transmettre décisions</li>
+              <li><strong>🎯 COORDINATION :</strong> Harmoniser actions entre élus thématiques</li>
+              <li><strong>🧭 ORIENTATION :</strong> Diriger demandes vers bon interlocuteur</li>
+              <li><strong>⚖️ MÉDIATION :</strong> Arbitrer conflits, négocier, trouver compromis</li>
+              <li><strong>🎤 REPRÉSENTATION :</strong> Défendre budget, porter projets</li>
+            </ul>
+          </div>
+
+          <div class="modal-section">
+            <h3>📞 Contact Direct</h3>
+            <p class="modal-text">
+              📧 Email : votre.email@creil.fr<br>
+              ☎️ Tél : 06 XX XX XX XX<br>
+              🏢 Permanence : Mardi 14h-17h (MCA)<br>
+              💻 Visio : Sur RDV (Teams/Zoom)
+            </p>
+            <button class="cta-button">Prendre Rendez-vous</button>
+            <button class="cta-button">M'envoyer un Message</button>
+          </div>
+        `,
+        
+        'agenda': `
+          <video class="modal-video" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          </video>
+          <h2 class="modal-title">📅 Agenda des Événements</h2>
+          <p class="modal-text">
+            Découvrez les 1200+ événements organisés chaque année par les associations creilloises.
+          </p>
+
+          <div class="modal-section">
+            <h3>🎭 Festival Les Infaillibles</h3>
+            <p class="modal-text">
+              📅 06-08 Février 2026<br>
+              📍 Faïencerie-théâtre, Creil<br>
+              🎯 Théâtre jeunesse (6ème édition)
+            </p>
+            <video class="modal-video" controls style="max-height: 200px;">
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <p class="modal-text">
+              3 spectacles proposés pour les 13 ans et plus
+            </p>
+            <button class="cta-button">Réserver</button>
+            <button class="cta-button" style="background: rgba(255,255,255,0.1);">
+              🔒 Modifier (Connexion asso requise)
+            </button>
+          </div>
+
+          <div class="modal-section">
+            <h3>🎵 Tournée Symphonique à Vélo</h3>
+            <p class="modal-text">
+              📅 31 Mai 2026<br>
+              📍 Agglomération Creil Sud Oise<br>
+              🎯 Orchestre Les Forces Majeures
+            </p>
+            <video class="modal-video" controls style="max-height: 200px;">
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <p class="modal-text">Concert itinérant à vélo - Une première en France !</p>
+            <button class="cta-button">Inscription Gratuite</button>
+          </div>
+
+          <div class="modal-section">
+            <h3>🔑 Espace Association</h3>
+            <p class="modal-text">
+              ⚠️ <strong>SEULES LES ASSOCIATIONS</strong> peuvent modifier les événements
+            </p>
+            <ul>
+              <li>➕ Ajouter mon événement</li>
+              <li>✏️ Modifier mes événements</li>
+              <li>🗑️ Supprimer événement</li>
+              <li>📊 Voir statistiques (participants, vues)</li>
+            </ul>
+            <button class="cta-button">Se Connecter</button>
+            <p class="modal-text" style="font-size: 0.9rem; margin-top: 12px;">
+              Pas encore inscrite ? <a href="#" style="color: #ff3de1;">Créer mon compte asso</a>
+            </p>
+          </div>
+
+          <button class="cta-button">📅 Voir Tout l'Agenda</button>
+          <button class="cta-button">🔍 Filtrer (Catégorie, Date, Lieu)</button>
+        `,
+        
+        'chatbot': `
+          <video class="modal-video" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          </video>
+          <h2 class="modal-title">🤖 Chatbot IA + Recherche</h2>
+          <p class="modal-text">
+            Votre assistant intelligent disponible 24/7. Posez n'importe quelle question 
+            sur les associations, les financements, les salles, le bénévolat...
+          </p>
+
+          <div class="modal-section">
+            <h3>💬 Fenêtre de Discussion</h3>
+            <div style="background: rgba(0,0,0,0.3); border-radius: 16px; padding: 20px; min-height: 300px;">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                <div style="width: 12px; height: 12px; background: #12b886; border-radius: 50%; animation: pulse 2s infinite;"></div>
+                <strong>Assistant Associatif Creillois - En ligne</strong>
+              </div>
+              
+              <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                <p style="margin: 0;">
+                  Bonjour ! 👋 Je suis votre assistant IA.<br>
+                  Posez-moi n'importe quelle question sur :<br><br>
+                  • Les 352 associations de Creil<br>
+                  • Les subventions disponibles<br>
+                  • Réserver une salle<br>
+                  • Devenir bénévole<br>
+                  • Créer une association<br>
+                  • Contacter un Agent de Liaison
+                </p>
+              </div>
+
+              <input type="text" placeholder="Tapez votre question ici..." style="width: 100%; padding: 12px 16px; border-radius: 999px; border: none; margin-bottom: 12px; font-size: 1rem;">
+              <button class="cta-button" style="width: 100%;">Envoyer 📤</button>
+            </div>
+          </div>
+
+          <div class="modal-section">
+            <h3>💡 Exemples de Recherches</h3>
+            <div style="display: grid; gap: 12px;">
+              <button class="cta-button" style="background: rgba(255,255,255,0.1); font-size: 0.95rem;">
+                🎭 "Associations de théâtre à Creil"
+              </button>
+              <button class="cta-button" style="background: rgba(255,255,255,0.1); font-size: 0.95rem;">
+                📅 "Événements ce week-end"
+              </button>
+              <button class="cta-button" style="background: rgba(255,255,255,0.1); font-size: 0.95rem;">
+                💰 "Comment obtenir subvention FDVA ?"
+              </button>
+              <button class="cta-button" style="background: rgba(255,255,255,0.1); font-size: 0.95rem;">
+                👥 "Devenir bénévole dans le sport"
+              </button>
+              <button class="cta-button" style="background: rgba(255,255,255,0.1); font-size: 0.95rem;">
+                🏢 "Réserver salle 50 personnes"
+              </button>
+              <button class="cta-button" style="background: rgba(255,255,255,0.1); font-size: 0.95rem;">
+                🗺️ "Assos quartier Rouher"
+              </button>
+            </div>
+          </div>
+
+          <div class="modal-section">
+            <h3>🔍 Recherche Avancée</h3>
+            <ul>
+              <li>Par mots-clés</li>
+              <li>Par catégorie</li>
+              <li>Par quartier</li>
+              <li>Par type de besoin</li>
+              <li>🎤 Recherche vocale</li>
+            </ul>
+          </div>
+        `
+      };
+      
+      return contents[type] || '<p>Contenu en cours de chargement...</p>';
+    }
+  </script>
+</body>
+</html>

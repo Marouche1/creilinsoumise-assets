@@ -1,0 +1,532 @@
+# STRUCTURES DE SOUTIEN AUX ASSOCIATIONS DE CREIL
+## Système de Liaison via Agents de Liaison (AL)
+
+---
+
+## 🏛️ NOYAU CENTRAL (Structures principales)
+
+### 1️⃣ MCA - Maison Creilloise des Associations
+
+**📍 Coordonnées**
+- Adresse : 11 rue des Hironvalles, 60100 Creil
+- Téléphone : 03 44 64 10 76
+- Email : mca@mairie-creil.fr
+- Horaires : Mardi au samedi 9h-12h / 14h-18h
+- Réseaux sociaux : Facebook
+
+**🎯 Missions principales**
+- Accueil et accompagnement des associations locales
+- Information des habitants sur la vie associative
+- Espace de rencontre, dialogue et innovation
+- Mise à disposition de ressources et moyens
+
+**⚙️ Fonctionnalités pour les associations**
+1. **Informations et conseils** sur la vie associative
+2. **Aide à la création** d'association, rédaction des statuts
+3. **Mise en place d'actions/projets**
+4. **Mise à disposition de salles** :
+   - 1 salle d'activité
+   - Salle Champrelle (110 personnes)
+5. **Expositions** (3 semaines par installation)
+6. **Organisation d'événements** : conférences, concerts, festivals, théâtre
+7. **Guides et ressources** : annuaire, fiches pratiques, bourse des bénévoles
+
+**🔗 Liaison avec les associations via AL**
+- **AL Général** → Coordination globale de toutes les associations
+- Point d'entrée principal pour nouvelles associations
+- Orientation vers le bon ELU selon la catégorie
+- Gestion de l'agenda général et des salles communes
+
+---
+
+### 2️⃣ CCVA - Conseil Creillois de la Vie Associative
+
+**📅 Création** : Janvier 2018
+
+**👥 Composition**
+- 22 associations représentatives
+- Élu municipal en charge de la vie associative
+- Chef de service vie associative
+- Techniciens municipaux
+- Réunions mensuelles
+
+**🎯 Objectifs**
+1. **Mutualisation inter-associative** : moyens matériels, humains, compétences, ingénierie, personnel
+2. **Aide au développement** et conseil des associations
+3. **Favoriser la connaissance** et l'échange entre associations
+4. **Cohésion et coordination** entre acteurs et projets
+5. **Instance démocratique** de force de proposition
+
+**📊 6 Domaines d'activités représentés**
+- Culture et patrimoine
+- Écologie et développement durable
+- Éducation populaire et jeunesse
+- Social, santé et handicap
+- Solidarité et vie quotidienne
+- Sports et loisirs
+
+**⚙️ Fonctionnalités**
+- **Troc des associations** : partage de matériel et compétences entre associations
+- **Renouvellement par tiers** chaque année (mandat de 3 ans)
+- **Mémoire des projets** et nouvelles perspectives
+
+**🔗 Liaison avec les associations via AL**
+- **AL par domaine** (6 agents, un par domaine)
+- Représentation démocratique des associations
+- Canal de remontée des besoins vers la mairie
+- Coordination des projets inter-associatifs
+- Gestion du troc inter-associatif
+
+---
+
+### 3️⃣ Centre Georges Brassens
+
+**📍 Localisation** : Quartier Rouher, 60100 Creil
+
+**🏢 Type** : Centre social municipal
+
+**🎯 Missions**
+- Animation sociale de quartier
+- Accompagnement des habitants
+- Espace de rencontre et d'activités
+
+**⚙️ Fonctionnalités pour les associations**
+1. **Mise à disposition d'espaces** pour activités associatives
+2. **Coordination locale** avec associations de quartier
+3. **Soutien aux projets** sociaux et éducatifs
+4. **Animation territoriale** du quartier Rouher
+
+**🔗 Liaison avec les associations via AL**
+- **AL Quartier Rouher** → Coordination associations locales du quartier
+- Liaison avec associations sociales, éducatives et culturelles du secteur
+- Organisation d'événements de quartier avec les associations
+- Point relais MCA pour le quartier
+
+---
+
+### 4️⃣ LDH - Ligue des Droits de l'Homme
+
+**🎯 Missions**
+- Défense des droits fondamentaux
+- Promotion des valeurs républicaines
+- Lutte contre les discriminations
+- Médiation et conseil juridique
+
+**⚙️ Fonctionnalités pour les associations**
+1. **Conseil juridique** sur les droits et libertés
+2. **Médiation** en cas de conflits
+3. **Formation** aux valeurs républicaines et laïcité
+4. **Veille juridique** sur les droits associatifs
+5. **Soutien** en cas de discrimination ou atteinte aux droits
+
+**🔗 Liaison avec les associations via AL**
+- **AL Droits & Éthique** → Transversal à tous les ELU
+- Conseil juridique accessible via tous les Agents de Liaison
+- Médiation sur demande des AL en cas de conflit
+- Formation des AL aux principes républicains
+- Garantie du respect des valeurs dans tous les projets
+
+---
+
+## 🏢 STRUCTURES PUBLIQUES DE SOUTIEN
+
+### 5️⃣ Agglomération Creil Sud Oise (ACSO)
+
+**🎯 Rôle**
+- Attribution de subventions aux associations du territoire
+- Soutien aux actions d'intérêt communautaire
+
+**⚙️ Fonctionnalités**
+1. **Subventions annuelles** (dossier CERFA avant 30 novembre N-1)
+2. **Règlement d'attribution** transparent
+3. **Soutien aux projets** valorisant le territoire
+4. **Contrat de ville** (subventions spécifiques)
+
+**🔗 Liaison avec les associations via AL**
+- **AL Financements** → Aide au montage des dossiers CERFA
+- Information sur les critères d'éligibilité
+- Accompagnement dans la demande de subventions
+- Suivi des dossiers déposés
+
+---
+
+### 6️⃣ Département de l'Oise
+
+**🎯 Rôle**
+- Premier partenaire des associations oisiennes
+- Subventions départementales
+
+**⚙️ Fonctionnalités**
+1. **Subventions de fonctionnement** (associations >1 an d'existence)
+2. **Subventions pour manifestations**
+3. **Aide à l'investissement** :
+   - Plafonné à 2 000 €
+   - Taux de 50% des dépenses TTC
+   - Seuil minimum : 200 € TTC
+   - 1 seule subvention/an
+4. **Club Sport 60** : dispositif spécifique associations sportives
+5. **Plateforme en ligne** pour dépôt de dossiers
+
+**🔗 Liaison avec les associations via AL**
+- **AL Financements Départementaux** → Accompagnement dossiers
+- Information sur dispositifs spécifiques (Club Sport 60, etc.)
+- Veille sur ouverture des campagnes annuelles
+- Aide au remplissage plateforme en ligne
+
+---
+
+### 7️⃣ Préfecture de l'Oise / DDETS
+
+**📍 Localisation** : Beauvais + antennes départementales
+
+**🎯 Rôle**
+- Pilotage des aides d'État aux associations
+- Coordination des politiques publiques
+
+**⚙️ Fonctionnalités**
+1. **FDVA** (Fonds de Développement pour la Vie Associative) :
+   - Formation des bénévoles
+   - Soutien au fonctionnement
+   - 300+ associations bénéficiaires/an en Oise
+   - Montant moyen : 2 030 €
+2. **FSU** (Fonds de Solidarité Urbaine) : quartiers prioritaires
+3. **Contrat d'Engagement Républicain**
+4. **Pacte des Solidarités** (2024)
+
+**🔗 Liaison avec les associations via AL**
+- **AL Aides d'État** → Information FDVA, FSU
+- Accompagnement signature Contrat d'Engagement Républicain
+- Veille sur appels à projets nationaux
+- Mise en relation avec services déconcentrés
+
+---
+
+### 8️⃣ CAF de l'Oise (Caisse d'Allocations Familiales)
+
+**📍 Points d'accueil** : Beauvais, Compiègne, **Creil**, Méru, Noyon
+
+**🎯 Rôle**
+- Soutien financier aux partenaires associatifs
+- Cohésion sociale et amélioration vie quotidienne des familles
+
+**⚙️ Fonctionnalités**
+1. **Prestations de service** (cofinancement structures d'animation)
+2. **Subventions et prêts sans intérêts** :
+   - Collectivités locales
+   - Associations (équipements et services)
+   - Entreprises (petite enfance)
+3. **Domaines couverts** :
+   - Petite enfance
+   - Jeunesse
+   - Temps libres
+   - Enfants en situation de handicap
+   - Soutien à la parentalité
+   - Animation de la vie sociale
+   - Foyers de jeunes travailleurs
+4. **RIAS Partenaire** (Relais Investissement Action Sociale)
+5. **Aide à domicile**, **REAAP**, **médiation familiale**
+
+**🔗 Liaison avec les associations via AL**
+- **AL Famille & Enfance** (ELU Éducation + Social/Santé)
+- Accompagnement demandes prestations de service
+- Information sur dispositifs parentalité
+- Mise en relation avec référents CAF locaux
+- Suivi des conventions de partenariat
+
+---
+
+## 🤝 STRUCTURES D'ACCOMPAGNEMENT SPÉCIALISÉES
+
+### 9️⃣ France Bénévolat Centre et Sud Oise - Antenne Creil
+
+**📍 Contact**
+- Email : sud-oise@francebenevolat.org
+- Téléphone : 06 74 86 47 90
+
+**🎯 Missions**
+- Promotion du bénévolat
+- Intermédiation active Associations/Bénévoles
+
+**⚙️ Fonctionnalités**
+1. **Mise en relation** bénévoles/associations
+2. **Promotion** du bénévolat local
+3. **Accompagnement** dans la recherche de bénévoles
+4. **Bourse aux bénévoles**
+
+**🔗 Liaison avec les associations via AL**
+- **AL Ressources Humaines Bénévoles** → Transversal tous ELU
+- Mise en relation associations cherchant bénévoles
+- Organisation de forums du bénévolat
+- Formation à la gestion des bénévoles
+
+---
+
+### 🔟 Mission d'Accueil et d'Information des Associations de l'Oise (MAIASO)
+
+**🎯 Missions**
+- Accueil et information des associations
+- Accompagnement administratif et juridique
+
+**⚙️ Fonctionnalités**
+1. **Conseil juridique** sur statuts, règlements
+2. **Accompagnement administratif**
+3. **Formation** des dirigeants associatifs
+4. **Documentation** et ressources
+
+**🔗 Liaison avec les associations via AL**
+- **AL Juridique & Administratif** → Support tous ELU
+- Orientation vers MAIASO pour questions complexes
+- Relais d'informations juridiques
+- Organisation de formations locales
+
+---
+
+### 1️⃣1️⃣ UDAFO - Union Départementale des Associations Familiales de l'Oise
+
+**🎯 Rôle**
+- Représentation des familles
+- Développement d'initiatives sociales
+
+**🏢 Structures affiliées**
+- **SATO-Picardie** : Addictions, prévention, soin, réduction des risques, hébergement, réinsertion (Oise et Aisne)
+
+**⚙️ Fonctionnalités**
+1. **Soutien aux associations familiales**
+2. **Projets sociaux** et de santé
+3. **Formations** et accompagnement
+
+**🔗 Liaison avec les associations via AL**
+- **AL Famille & Social** (ELU Social/Santé + Solidarité)
+- Mise en relation avec associations spécialisées
+- Information sur dispositifs famille
+- Projets partenariaux
+
+---
+
+### 1️⃣2️⃣ CDOS - Comité Départemental Olympique et Sportif de l'Oise
+
+**🎯 Rôle**
+- Soutien aux associations sportives
+- Développement du sport dans l'Oise
+
+**⚙️ Fonctionnalités**
+1. **Dispositifs "ESS 60"**
+2. **Programme "Oise Sportive"** (Département)
+3. **Accompagnement** clubs sportifs
+4. **Formation** dirigeants et éducateurs
+
+**🔗 Liaison avec les associations via AL**
+- **AL Sport** (ELU Sport)
+- Information sur aides spécifiques sport
+- Mise en réseau clubs sportifs
+- Organisation d'événements sportifs inter-clubs
+
+---
+
+### 1️⃣3️⃣ Maisons des Associations (Beauvais, Compiègne, Senlis)
+
+**⚙️ Fonctionnalités**
+1. **Ateliers "Recherche de financements"** annuels
+2. **Structuration de demandes**
+3. **Montage de dossiers** bancables
+
+**🔗 Liaison avec les associations via AL**
+- **AL Financements** → Organisation sessions formation à Creil
+- Mutualisation des ressources inter-villes
+- Invitation associations creilloises aux ateliers
+- Partage de bonnes pratiques
+
+---
+
+## 🤖 CHATBOT IA - Agent Virtuel de Liaison
+
+**🎯 Rôle**
+- Support 24/7 pour toutes les associations
+- Automatisation des demandes simples
+- Orientation intelligente vers les AL et structures
+
+**⚙️ Fonctionnalités détaillées**
+
+### 1. **Information & Orientation**
+```
+Association : "Je cherche une aide financière"
+Chatbot : "Plusieurs sources possibles :
+• ACSO (Agglo) : subvention avant 30 nov
+• Département : aide investissement (max 2000€)
+• CAF : si projet famille/enfance
+• FDVA : formation bénévoles
+Votre projet concerne quel domaine ?"
+```
+
+### 2. **Mise en relation avec structures**
+```
+Association : "J'ai un problème juridique sur mes statuts"
+Chatbot : "Je vous oriente vers :
+1. LDH pour aspect droits fondamentaux
+2. MAIASO pour conseil juridique associatif
+3. Votre Agent de Liaison peut aussi vous accompagner
+Préférez-vous un rdv physique ou virtuel ?"
+```
+
+### 3. **Gestion agenda & salles**
+```
+Association : "Salle pour 40 personnes samedi prochain"
+Chatbot : "Disponibilités trouvées :
+• MCA Salle Champrelle (110p) - 14h-22h
+• Centre GB (50p) - 9h-18h
+Réserver directement ou contacter AL ?"
+```
+
+### 4. **Recherche de partenaires**
+```
+Association écolo : "Projet jardins partagés, cherche partenaires"
+Chatbot : "Associations similaires à Creil :
+• AU5V (vélo/mobilité)
+• 3 asso éducation environnement
+Voulez-vous que je contacte votre AL Écologie 
+pour organiser une réunion ?"
+```
+
+### 5. **Aide aux dossiers de subvention**
+```
+Association : "Comment remplir dossier FDVA ?"
+Chatbot : "FDVA - Guide étape par étape :
+1. Télécharger formulaire sur [lien]
+2. Pièces à fournir : statuts, RIB, budget prévisionnel
+3. Deadline : 15 mars
+Je peux vous mettre en relation avec AL Financements 
+pour un accompagnement personnalisé ?"
+```
+
+### 6. **Veille & notifications**
+```
+Chatbot (proactif) : "🔔 Nouvelle info pour votre catégorie Sport :
+• Département : campagne Club Sport 60 ouverte
+• CDOS : formation dirigeants le 25 mars
+• Votre AL organise réunion ELU Sport le 18 fév
+Souhaitez-vous plus de détails ?"
+```
+
+**🔗 Intégration avec les AL**
+- **Remontée automatique** des questions complexes vers AL humain
+- **Tableau de bord** pour AL : questions fréquentes, besoins détectés
+- **Apprentissage continu** basé sur interactions
+- **Multilinguisme** : Français, Arabe, Turc, Portugais (communautés creilloises)
+
+---
+
+## 📊 SCHÉMA DE FLUX D'INFORMATION
+
+```
+┌─────────────────────────────────────────────────────┐
+│           ASSOCIATION A BESOIN D'AIDE                │
+└─────────────────────────────────────────────────────┘
+                        ↓
+        ┌───────────────┴───────────────┐
+        │                               │
+   [Chatbot IA]                   [Agent de Liaison]
+   Disponible 24/7                   (Humain)
+        │                               │
+        └───────────────┬───────────────┘
+                        ↓
+         ┌──────────────┴──────────────┐
+         │  Question simple/répétitive  │
+         │  → Chatbot répond seul       │
+         └─────────────────────────────┘
+                        ↓
+         ┌──────────────┴──────────────┐
+         │  Question complexe/sensible  │
+         │  → Transfert vers AL humain  │
+         └─────────────────────────────┘
+                        ↓
+         ┌──────────────┴──────────────────────────┐
+         │  AL identifie la structure compétente :  │
+         ├──────────────────────────────────────────┤
+         │  • MCA/CCVA : vie associative générale   │
+         │  • LDH : juridique, droits, médiation    │
+         │  • CAF : famille, enfance, jeunesse      │
+         │  • ACSO/Département : subventions        │
+         │  • Préfecture : FDVA, CER                │
+         │  • Structures spécialisées : France      │
+         │    Bénévolat, CDOS, UDAFO, etc.          │
+         └──────────────────────────────────────────┘
+                        ↓
+         ┌──────────────┴──────────────┐
+         │  AL accompagne l'association │
+         │  dans la démarche            │
+         └─────────────────────────────┘
+                        ↓
+         ┌──────────────┴──────────────┐
+         │  Suivi et feedback via       │
+         │  Chatbot + AL                │
+         └─────────────────────────────┘
+```
+
+---
+
+## 💼 RÔLES DES AGENTS DE LIAISON PAR STRUCTURE
+
+### AL Général (MCA)
+- Premier contact nouvelles associations
+- Orientation catégorielle
+- Coordination ELU
+
+### AL par ELU (x6)
+- **AL Culturels** → Lien MCA, CCVA, structures culturelles
+- **AL Écologie** → Lien CCVA, projets environnement
+- **AL Éducation** → Lien CAF, structures éducatives
+- **AL Social/Santé** → Lien CAF, UDAFO, SATO, ADARS
+- **AL Solidarité** → Lien LDH, structures humanitaires
+- **AL Sport** → Lien CDOS, Club Sport 60
+
+### AL Transversaux
+- **AL Droits & Éthique** (LDH) → Tous ELU
+- **AL Financements** → Aide dossiers tous ELU
+- **AL Juridique** → MAIASO, support tous ELU
+- **AL Bénévolat** (France Bénévolat) → Tous ELU
+- **AL Quartier** (Centre GB) → Associations locales Rouher
+
+---
+
+## 📅 CALENDRIER TYPE DES LIAISONS
+
+### Mensuel
+- Réunion CCVA (22 associations + élus + AL)
+- Café des associations par ELU (networking)
+- Point AL avec Chatbot IA (analyse données)
+
+### Trimestriel
+- AG de chaque ELU
+- Bilan financements (ACSO, Département, CAF)
+- Formation AL (nouveautés juridiques, outils)
+
+### Annuel
+- Forum des associations
+- Bilan activité CCVA
+- Renouvellement 1/3 des associations CCVA
+- Ouverture campagnes subventions (nov-jan)
+
+---
+
+## 🎯 BÉNÉFICES DU SYSTÈME DE LIAISON
+
+### Pour les Associations
+✅ **Guichet unique** via AL (plus besoin de connaître toutes les structures)
+✅ **Gain de temps** (Chatbot 24/7 + AL expert)
+✅ **Meilleur accompagnement** financier et juridique
+✅ **Réseau** inter-associatif facilité
+
+### Pour les Structures
+✅ **Efficacité** : moins de doublons, meilleure coordination
+✅ **Visibilité** : AL fait connaître leurs dispositifs
+✅ **Remontée terrain** : besoins réels des associations
+
+### Pour la Ville
+✅ **Cohésion** du tissu associatif
+✅ **Optimisation** des ressources publiques
+✅ **Innovation** (IA + humain complémentaires)
+✅ **Démocratie participative** renforcée (CCVA)
+
+---
+
+**Date de mise à jour** : Janvier 2026

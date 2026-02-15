@@ -4,10 +4,53 @@
 <head>
   <meta charset="UTF-8" />
   <title>Programme de Creil l'insoumise</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#8f2fff" />
+  <meta name="description" content="Programme complet de Creil l'insoumise - Découvrez nos propositions pour Creil" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/images/logo-creil-insoumise.png" />
   <link rel="stylesheet" href="../../css/style.css" />
   <script defer src="../../js/app.js"></script>
+  
   <style>
+    /* 🎯 MODE APPLICATION - Cache scrollbar et optimise pour mobile */
+    html {
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
+      overscroll-behavior: none;
+    }
+
+    /* Permettre la sélection du texte */
+    .content-card, .gradient-card, .section-title {
+      -webkit-user-select: text;
+      user-select: text;
+    }
+
+    /* Masquer scrollbar tout en gardant le scroll */
+    ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+
+    /* Safe area pour les notchs iPhone */
+    .app-shell {
+      padding-top: max(16px, env(safe-area-inset-top));
+      padding-bottom: max(16px, env(safe-area-inset-bottom));
+      padding-left: max(16px, env(safe-area-inset-left));
+      padding-right: max(16px, env(safe-area-inset-right));
+    }
+
     /* Titre "Programme" centré */
     .section-title {
       text-align: center;
@@ -323,47 +366,40 @@
 
         <h2 class="section-title">Programme</h2>
 
-        <!-- GRILLE DES OCTOGONES — CHEMINS CORRIGÉS -->
+        <!-- GRILLE DES OCTOGONES -->
         <div class="octagon-grid">
-
-<a class="octagon-btn" href="3mois_3priorites.html" style="background-image: url('/boutons_services/programme/image/programme_detail/3mois_3priorites.jpg');">Édito — Nous sommes la richesse de Creil</a>
-
- <a class="octagon-btn" href="developpement_economique.html" style="background-image: url('/boutons_services/programme/image/programme_detail/developpement_economique.jpg');">Une vision sur 12 ans      Le calendrier de combat (2026–2038)</a>
-
- <a class="octagon-btn" href="emploi.html" style="background-image: url('/boutons_services/programme/image/programme_detail/emploi.jpg');">L’eau, l’énergie et le pouvoir de vivre</a>
-         
- <a class="octagon-btn" href="bouton_logement/index.html" style="background-image: url('/boutons_services/programme/image/programme_detail/logement.jpg');">Logement, cadre de vie et écologie urbaine</a>
-
- <a class="octagon-btn" href="enfance.html" style="background-image: url('/boutons_services/programme/image/programme_detail/enfance.jpg');">Santé, handicap et prévention</a>
-
-<a class="octagon-btn" href="bouton_jeunesse/index.html" style="background-image: url('/boutons_services/programme/image/programme_detail/jeunesse.jpg');">Éducation, enfance et jeunesse</a>
-
-<a class="octagon-btn" href="transition_ecologique.html" style="background-image: url('/boutons_services/programme/image/programme_detail/transition_ecologique.jpg');">Solidarités et autonomie</a>
-
-<a class="octagon-btn" href="Le_sport.html" style="background-image: url('/boutons_services/programme/image/programme_detail/le_sport.jpg');">Sport : populaire, ambitieux et utile</a>
-
-<a class="octagon-btn" href="vie_associative.html" style="background-image: url('/boutons_services/programme/image/programme_detail/vie_associative.jpg');">Vie associative, culture et démocratie</a>
-
-<a class="octagon-btn" href="securite_publique.html" style="background-image: url('/boutons_services/programme/image/programme_detail/securite_publique.jpg');">Économie et partenariats</a>
-
-<a class="octagon-btn" href="famille.html" style="background-image: url('/boutons_services/programme/image/programme_detail/famille.jpg');">Tranquillité publique et sécurité</a>
-
-<a class="octagon-btn" href="handicap.html" style="background-image: url('/boutons_services/programme/image/programme_detail/handicap.jpg');">Fonction publique municipale</a>
-
-<a class="octagon-btn" href="intercommunalite_forte.html" style="background-image: url('/boutons_services/programme/image/programme_detail/intercommunalite_forte.jpg');">La fatalité n’existe pas</a>
+          <a class="octagon-btn" href="3mois_3priorites.html" style="background-image: url('/boutons_services/programme/image/programme_detail/3mois_3priorites.jpg');">Édito — Nous sommes la richesse de Creil</a>
+         <a class="octagon-btn" href="bouton_calendrier/calendrier.html" style="background-image: url('/boutons_services/programme/image/programme_detail/calendrier.png');">
 
 
+       <a class="octagon-btn" href="bouton_pouvoir_vivre/pouvoir_de_vivre.html" style="background-image: url('image/programme_detail/emploi.jpg');">L'eau, l'énergie et le pouvoir de vivre</a>
+          <a class="octagon-btn" href="bouton_logement/index.html" style="background-image: url('/boutons_services/programme/image/programme_detail/logement.jpg');">Logement</a>
+
+<a class="octagon-btn" href="bouton_logements/logements.html" style="background-image: url('image/programme_detail/logement.jpg');">Logement, cadre de vie et écologie urbaine</a>
+
+
+<a class="octagon-btn" href="bouton_sante/sante.html" style="background-image: url('image/programme_detail/enfance.jpg');">Santé, handicap et prévention</a>
+
+ <a class="octagon-btn" href="bouton_jeunesse/index.html" style="background-image: url('/boutons_services/programme/image/programme_detail/jeunesse.jpg');"></a>
+
+        <a class="octagon-btn" href="bouton_education/education.html" style="background-image: url('image/programme_detail/jeunesse.jpg');">Éducation, enfance et jeunesse</a>
+
+
+
+          <a class="octagon-btn" href="transition_ecologique.html" style="background-image: url('/boutons_services/programme/image/programme_detail/transition_ecologique.jpg');">Solidarités et autonomie</a>
+          <a class="octagon-btn" href="Le_sport.html" style="background-image: url('/boutons_services/programme/image/programme_detail/le_sport.jpg');">Sport : populaire, ambitieux et utile</a>
+          <a class="octagon-btn" href="vie_associative.html" style="background-image: url('/boutons_services/programme/image/programme_detail/vie_associative.jpg');">Vie associative, culture et démocratie</a>
+          <a class="octagon-btn" href="securite_publique.html" style="background-image: url('/boutons_services/programme/image/programme_detail/securite_publique.jpg');">Économie et partenariats</a>
+          <a class="octagon-btn" href="famille.html" style="background-image: url('/boutons_services/programme/image/programme_detail/famille.jpg');">Tranquillité publique et sécurité</a>
+          <a class="octagon-btn" href="handicap.html" style="background-image: url('/boutons_services/programme/image/programme_detail/handicap.jpg');">Fonction publique municipale</a>
+          <a class="octagon-btn" href="intercommunalite_forte.html" style="background-image: url('/boutons_services/programme/image/programme_detail/intercommunalite_forte.jpg');">La fatalité n'existe pas</a>
           <a class="octagon-btn" href="service.html?type=reclamation" style="background-image: url('/boutons_services/programme/image/programme_detail/reclamation_citoyenne.jpg');">Réclamation citoyenne</a>
           <a class="octagon-btn" href="cohesion_sociale.html" style="background-image: url('/boutons_services/programme/image/programme_detail/cohesion_sociale.jpg');">Cohésion sociale et solidarité</a>
           <a class="octagon-btn" href="bouton_consultation_citoyenne/index.html" style="background-image: url('/boutons_services/programme/image/programme_detail/consultation_citoyenne.jpg');">Consultation citoyenne</a>
-          
-          
-
           <a class="octagon-btn" href="numerique.html" style="background-image: url('https://i.ibb.co/MxB4pLwg/17709889148984015921417270527168.jpg');">Numérique</a>
+<a class="octagon-btn" href="handicap.html" style="background-image: url('/boutons_services/programme/video/bouton.mp4');">Fonction publique municipale</a>
 
 
-
-        
         </div>
 
         <div class="nav-links" style="margin-top: 30px; justify-content: center;">

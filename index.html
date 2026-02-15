@@ -1,0 +1,477 @@
+<!-- Fichier : index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jeunesse — Programme Creil l'insoumise</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script defer src="../js/app.js"></script>
+  <style>
+    .page-title {
+      text-align: center;
+      margin: 24px 0 16px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .intro-text {
+      text-align: center;
+      margin: 16px 0 24px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      line-height: 1.6;
+      padding: 0 16px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .service-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 22px;
+      text-decoration: none;
+      color: white;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      min-height: 110px;
+    }
+
+    .service-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .service-btn:active {
+      transform: translateY(0);
+    }
+
+    .service-icon {
+      font-size: 42px;
+      flex: 0 0 auto;
+    }
+
+    .service-text {
+      flex: 1;
+    }
+
+    .service-text .title {
+      font-weight: 800;
+      font-size: 15px;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .service-text .desc {
+      font-size: 12px;
+      opacity: 0.85;
+      line-height: 1.3;
+    }
+
+    /* Bouton spécial "Mes propositions" */
+    .special-btn {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #feca57, #ff6348, #ff9ff3);
+      position: relative;
+      overflow: hidden;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    .special-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: rotate 8s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Couleurs des boutons - Vibrantes et attractives pour les jeunes */
+    .btn-jobs { background: linear-gradient(135deg, #ff6b6b, #ee5a6f); }
+    .btn-formation { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
+    .btn-logement { background: linear-gradient(135deg, #f093fb, #f5576c); }
+    .btn-aides { background: linear-gradient(135deg, #feca57, #ff9ff3); }
+    .btn-sante { background: linear-gradient(135deg, #48dbfb, #0abde3); }
+    .btn-sports { background: linear-gradient(135deg, #ff9ff3, #feca57); }
+    .btn-culture { background: linear-gradient(135deg, #a29bfe, #6c5ce7); }
+    .btn-mobilite { background: linear-gradient(135deg, #fd79a8, #fdcb6e); }
+    .btn-engagement { background: linear-gradient(135deg, #00b894, #00cec9); }
+    .btn-ecoute { background: linear-gradient(135deg, #ff7675, #d63031); }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 18px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    @media (max-width: 600px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .special-btn {
+        grid-column: span 1;
+      }
+    }
+  </style>
+
+<style>
+/* 🎨 HEADER CENTRÉ AVEC EFFETS SPÉCIAUX */
+.app-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 24px;
+  position: relative;
+  min-height: 180px;
+}
+
+/* ❌ MASQUER LOGO VILLE */
+.logo-right {
+  display: none !important;
+}
+
+/* 🌟 Conteneur pour particules */
+.logo-left {
+  position: relative;
+  width: 140px !important;
+  height: 140px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+  padding: 12px !important;
+  z-index: 10;
+  
+  /* 💫 Ombre lumineuse pulsante */
+  box-shadow: 
+    0 0 40px rgba(255, 45, 111, 0.5),
+    0 0 80px rgba(138, 43, 226, 0.4),
+    0 10px 40px rgba(0, 0, 0, 0.2) !important;
+  
+  animation: pulse-glow 3s ease-in-out infinite !important;
+}
+
+/* 🌈 Bordure arc-en-ciel animée */
+.logo-left::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    #ff2d6f,
+    #8a2be2,
+    #ff6a00,
+    #ff2d6f
+  );
+  background-size: 300% 300%;
+  z-index: -1;
+  animation: gradient-rotate 6s linear infinite;
+}
+
+.logo-left img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) !important;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-left:hover img {
+  transform: scale(1.08) rotate(8deg);
+}
+
+/* 🎆 PARTICULES LUMINEUSES */
+.logo-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: float-particle 4s ease-in-out infinite;
+}
+
+.logo-particle::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, currentColor 0%, transparent 70%);
+  filter: blur(2px);
+}
+
+/* Positions des 8 particules */
+.logo-particle:nth-child(1) { color: #ff2d6f; animation-delay: 0s; left: 50%; top: -10px; }
+.logo-particle:nth-child(2) { color: #8a2be2; animation-delay: 0.5s; left: calc(100% + 5px); top: 15%; }
+.logo-particle:nth-child(3) { color: #ff6a00; animation-delay: 1s; left: calc(100% + 10px); top: 50%; }
+.logo-particle:nth-child(4) { color: #00d4ff; animation-delay: 1.5s; left: calc(100% + 5px); top: 85%; }
+.logo-particle:nth-child(5) { color: #ff2d6f; animation-delay: 2s; left: 50%; top: calc(100% + 10px); }
+.logo-particle:nth-child(6) { color: #8a2be2; animation-delay: 2.5s; left: -10px; top: 85%; }
+.logo-particle:nth-child(7) { color: #ff6a00; animation-delay: 3s; left: -15px; top: 50%; }
+.logo-particle:nth-child(8) { color: #00d4ff; animation-delay: 3.5s; left: -10px; top: 15%; }
+
+/* 🌈 Animations */
+@keyframes gradient-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 40px rgba(255, 45, 111, 0.5),
+      0 0 80px rgba(138, 43, 226, 0.4),
+      0 10px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 
+      0 0 60px rgba(255, 45, 111, 0.7),
+      0 0 120px rgba(138, 43, 226, 0.6),
+      0 15px 50px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes float-particle {
+  0% { opacity: 0; transform: translate(0, 0) scale(0); }
+  10% { opacity: 1; transform: translate(0, 0) scale(1); }
+  50% { 
+    opacity: 0.8;
+    transform: translate(
+      calc(var(--px, 0) * 15px),
+      calc(var(--py, 0) * 15px)
+    ) scale(1.2);
+  }
+  100% { 
+    opacity: 0;
+    transform: translate(
+      calc(var(--px, 0) * 30px),
+      calc(var(--py, 0) * 30px)
+    ) scale(0.5);
+  }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .logo-left { width: 110px !important; height: 110px !important; }
+  .logo-particle { width: 6px; height: 6px; }
+}
+
+@media (max-width: 520px) {
+  .logo-left { width: 90px !important; height: 90px !important; }
+  .logo-particle { width: 5px; height: 5px; }
+}
+</style>
+
+<script>
+// 🎆 Génération des particules autour du logo
+(function() {
+  function addParticles() {
+    const logos = document.querySelectorAll('.logo-left');
+    
+    logos.forEach(logo => {
+      // Ne pas dupliquer
+      if (logo.querySelector('.logo-particle')) return;
+      
+      // 8 particules autour du logo
+      for (let i = 0; i < 8; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'logo-particle';
+        
+        // Direction selon angle
+        const angle = (i * 45) * (Math.PI / 180);
+        particle.style.setProperty('--px', Math.cos(angle).toFixed(2));
+        particle.style.setProperty('--py', Math.sin(angle).toFixed(2));
+        
+        logo.appendChild(particle);
+      }
+    });
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addParticles);
+  } else {
+    addParticles();
+  }
+})();
+</script>
+
+</head>
+<body class="app-bg">
+  <div class="app-shell">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-left">
+        <img src="images/logo-creil-insoumise.png" alt="Creil l'insoumise" />
+      </div>
+      
+    </header>
+
+    <!-- Contenu -->
+    <main>
+      <h1 class="page-title">Service Jeunesse</h1>
+
+      <section class="content-card gradient-card">
+        <!-- Vidéo explicative -->
+        <div class="hero-video-wrapper">
+          <video class="hero-video" controls playsinline preload="metadata">
+            <source src="video/jeunesse/jeunesse.mp4" type="video/mp4" />
+            Votre navigateur ne supporte pas la vidéo.
+          </video>
+        </div>
+
+        <!-- Texte explicatif -->
+        <div class="intro-text">
+          <strong>À Creil, trop de jeunes sont perdus, sans diplôme, parfois dans des situations difficiles.</strong><br>
+          Ce service propose des solutions concrètes : formation, emploi, aide financière, engagement citoyen et projets innovants pour vous donner une vraie chance de réussir. Parce qu'un jeune qui réussit, c'est toute la ville qui gagne.
+        </div>
+
+        <!-- Grille des services -->
+        <div class="services-grid">
+          
+          <!-- 1. Jobs & Stages -->
+          <a href="bouton-jobs-stages/jobs-stages.html" class="service-btn btn-jobs">
+            <div class="service-icon">💼</div>
+            <div class="service-text">
+              <div class="title">Jobs & Stages</div>
+              <div class="desc">Offres d'emploi, stages, alternance</div>
+            </div>
+          </a>
+
+          <!-- 2. Formation & Orientation -->
+          <a href="bouton-formation-orientation/formation-orientation.html" class="service-btn btn-formation">
+            <div class="service-icon">🎓</div>
+            <div class="service-text">
+              <div class="title">Formation & Orientation</div>
+              <div class="desc">Parcours de formation, aide orientation</div>
+            </div>
+          </a>
+
+          <!-- 3. Logement jeunes -->
+          <a href="bouton-logement-jeunes/logement-jeunes.html" class="service-btn btn-logement">
+            <div class="service-icon">🏠</div>
+            <div class="service-text">
+              <div class="title">Logement jeunes</div>
+              <div class="desc">Aide logement, résidences jeunes, FJT</div>
+            </div>
+          </a>
+
+          <!-- 4. Aides financières -->
+          <a href="bouton-aides-financieres/aides-financieres.html" class="service-btn btn-aides">
+            <div class="service-icon">💶</div>
+            <div class="service-text">
+              <div class="title">Aides financières</div>
+              <div class="desc">Bourses, aides CAF, fonds d'urgence</div>
+            </div>
+          </a>
+
+          <!-- 5. Santé jeunes -->
+          <a href="bouton-sante-jeunes/sante-jeunes.html" class="service-btn btn-sante">
+            <div class="service-icon">🏥</div>
+            <div class="service-text">
+              <div class="title">Santé jeunes</div>
+              <div class="desc">Planning, centre santé, psy gratuit</div>
+            </div>
+          </a>
+
+          <!-- 6. Sports & Loisirs -->
+          <a href="bouton-sports-loisirs/sports-loisirs.html" class="service-btn btn-sports">
+            <div class="service-icon">⚽</div>
+            <div class="service-text">
+              <div class="title">Sports & Loisirs</div>
+              <div class="desc">Clubs sportifs, activités, Pass'Sport</div>
+            </div>
+          </a>
+
+          <!-- 7. Culture & Événements -->
+          <a href="bouton-culture-evenements/culture-evenements.html" class="service-btn btn-culture">
+            <div class="service-icon">🎭</div>
+            <div class="service-text">
+              <div class="title">Culture & Événements</div>
+              <div class="desc">Concerts, spectacles, cinéma, ateliers</div>
+            </div>
+          </a>
+
+          <!-- 8. Mobilité -->
+          <a href="bouton-mobilite/mobilite.html" class="service-btn btn-mobilite">
+            <div class="service-icon">🚴</div>
+            <div class="service-text">
+              <div class="title">Mobilité</div>
+              <div class="desc">Pass transport, permis à 1€, aide vélo</div>
+            </div>
+          </a>
+
+          <!-- 9. Engagement citoyen -->
+          <a href="bouton-engagement-citoyen/engagement-citoyen.html" class="service-btn btn-engagement">
+            <div class="service-icon">🤝</div>
+            <div class="service-text">
+              <div class="title">Engagement citoyen</div>
+              <div class="desc">Bénévolat, Service Civique, projets</div>
+            </div>
+          </a>
+
+          <!-- 10. Point écoute jeunes -->
+          <a href="bouton-point-ecoute/point-ecoute.html" class="service-btn btn-ecoute">
+            <div class="service-icon">📞</div>
+            <div class="service-text">
+              <div class="title">Point écoute jeunes</div>
+              <div class="desc">Accompagnement, aide, écoute</div>
+            </div>
+          </a>
+
+          <!-- 11. MES PROPOSITIONS (BOUTON SPÉCIAL) -->
+          <a href="bouton-mes-propositions/mes-propositions.html" class="service-btn special-btn">
+            <div class="service-icon">💡</div>
+            <div class="service-text">
+              <div class="title">💡 Mes propositions</div>
+              <div class="desc">Propositions innovantes : création commerce, financement études/voyages, aide réseaux sociaux, e-commerce...</div>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Retour -->
+        <a href="../programme.html" class="back-link">← Retour au Programme</a>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

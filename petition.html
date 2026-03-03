@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>📜 PETITION - Proposer une pétition</title>
+
+  <style>
+    :root{
+      --bg1:#c2185b;
+      --bg2:#8e24aa;
+      --bg3:#ff5a5f;
+      --card:#ffffff10;
+      --text:#ffffff;
+      --muted:#ffffffcc;
+      --shadow: 0 18px 45px rgba(0,0,0,.28);
+      --shadow2: 0 10px 25px rgba(0,0,0,.22);
+      --radius: 22px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+    }
+
+    .header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:16px 20px;
+      background: rgba(0,0,0,.1);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .logo-left,
+    .logo-right{
+      width:100px;
+      height:100px;
+      border-radius:999px;
+      overflow:hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,.3);
+      border: 3px solid rgba(255,255,255,.6);
+      margin:0 8px;
+    }
+
+    .logo-left img,
+    .logo-right img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .header-title{
+      text-align:center;
+      flex:1;
+      padding:0 8px;
+    }
+    .header-title h1{
+      margin:0;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: .5px;
+    }
+    .header-title p{
+      margin:4px 0 0;
+      font-size:15px;
+      opacity:.9;
+    }
+
+    .container{
+      max-width:800px;
+      margin:0 auto;
+      padding:20px 16px;
+    }
+
+    .video-container{
+      margin:20px 0;
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:#000;
+    }
+
+    .video-container video{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .form-card{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .form-group{
+      margin-bottom:18px;
+    }
+
+    .form-group label{
+      display:block;
+      margin-bottom:6px;
+      font-weight:bold;
+      font-size:15px;
+    }
+
+    .form-group input,
+    .form-group textarea{
+      width:100%;
+      padding:12px;
+      border:none;
+      border-radius:12px;
+      background:rgba(0,0,0,.2);
+      color:white;
+      font-size:16px;
+      border:1px solid rgba(255,255,255,.3);
+    }
+
+    .form-group textarea{
+      height:120px;
+      resize:vertical;
+    }
+
+    .info-box{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:12px;
+      padding:12px;
+      margin-top:16px;
+      font-size:14px;
+      line-height:1.5;
+      color:var(--muted);
+    }
+
+    .btn-primary{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:18px;
+      background:linear-gradient(135deg, #ff2d6f, #a100ff);
+      color:white;
+      font-weight:bold;
+      font-size:18px;
+      cursor:pointer;
+      box-shadow:0 8px 20px rgba(0,0,0,.3);
+    }
+    .btn-primary:active{
+      transform:scale(0.98);
+    }
+
+    .btn-actions{
+      display:flex;
+      justify-content:space-between;
+      gap:8px;
+      margin-top:16px;
+    }
+
+    .btn-back{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 20px;
+      border:1px solid rgba(255,255,255,.4);
+      border-radius:16px;
+      background:transparent;
+      color:white;
+      font-weight:bold;
+      text-decoration:none;
+    }
+
+    .btn-voir-toutes{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 20px;
+      border:1px solid rgba(255,255,255,.4);
+      border-radius:16px;
+      background:transparent;
+      color:white;
+      font-weight:bold;
+      text-decoration:none;
+    }
+
+    @media (max-width: 520px){
+      .header{
+        flex-direction:column;
+        gap:12px;
+      }
+      .header-title{
+        padding:0;
+      }
+      .video-container{
+        margin:16px 0;
+      }
+      .form-card{
+        padding:16px;
+      }
+      .btn-primary{
+        font-size:16px;
+        padding:12px;
+      }
+      .btn-actions{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+  </style>
+
+<style>
+/* 🎨 HEADER CENTRÉ AVEC EFFETS SPÉCIAUX */
+.app-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 24px;
+  position: relative;
+  min-height: 180px;
+}
+
+/* ❌ MASQUER LOGO VILLE */
+.logo-right {
+  display: none !important;
+}
+
+/* 🌟 Conteneur pour particules */
+.logo-left {
+  position: relative;
+  width: 140px !important;
+  height: 140px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+  padding: 12px !important;
+  z-index: 10;
+  
+  /* 💫 Ombre lumineuse pulsante */
+  box-shadow: 
+    0 0 40px rgba(255, 45, 111, 0.5),
+    0 0 80px rgba(138, 43, 226, 0.4),
+    0 10px 40px rgba(0, 0, 0, 0.2) !important;
+  
+  animation: pulse-glow 3s ease-in-out infinite !important;
+}
+
+/* 🌈 Bordure arc-en-ciel animée */
+.logo-left::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    #ff2d6f,
+    #8a2be2,
+    #ff6a00,
+    #ff2d6f
+  );
+  background-size: 300% 300%;
+  z-index: -1;
+  animation: gradient-rotate 6s linear infinite;
+}
+
+.logo-left img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) !important;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-left:hover img {
+  transform: scale(1.08) rotate(8deg);
+}
+
+/* 🎆 PARTICULES LUMINEUSES */
+.logo-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: float-particle 4s ease-in-out infinite;
+}
+
+.logo-particle::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, currentColor 0%, transparent 70%);
+  filter: blur(2px);
+}
+
+/* Positions des 8 particules */
+.logo-particle:nth-child(1) { color: #ff2d6f; animation-delay: 0s; left: 50%; top: -10px; }
+.logo-particle:nth-child(2) { color: #8a2be2; animation-delay: 0.5s; left: calc(100% + 5px); top: 15%; }
+.logo-particle:nth-child(3) { color: #ff6a00; animation-delay: 1s; left: calc(100% + 10px); top: 50%; }
+.logo-particle:nth-child(4) { color: #00d4ff; animation-delay: 1.5s; left: calc(100% + 5px); top: 85%; }
+.logo-particle:nth-child(5) { color: #ff2d6f; animation-delay: 2s; left: 50%; top: calc(100% + 10px); }
+.logo-particle:nth-child(6) { color: #8a2be2; animation-delay: 2.5s; left: -10px; top: 85%; }
+.logo-particle:nth-child(7) { color: #ff6a00; animation-delay: 3s; left: -15px; top: 50%; }
+.logo-particle:nth-child(8) { color: #00d4ff; animation-delay: 3.5s; left: -10px; top: 15%; }
+
+/* 🌈 Animations */
+@keyframes gradient-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 40px rgba(255, 45, 111, 0.5),
+      0 0 80px rgba(138, 43, 226, 0.4),
+      0 10px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 
+      0 0 60px rgba(255, 45, 111, 0.7),
+      0 0 120px rgba(138, 43, 226, 0.6),
+      0 15px 50px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes float-particle {
+  0% { opacity: 0; transform: translate(0, 0) scale(0); }
+  10% { opacity: 1; transform: translate(0, 0) scale(1); }
+  50% { 
+    opacity: 0.8;
+    transform: translate(
+      calc(var(--px, 0) * 15px),
+      calc(var(--py, 0) * 15px)
+    ) scale(1.2);
+  }
+  100% { 
+    opacity: 0;
+    transform: translate(
+      calc(var(--px, 0) * 30px),
+      calc(var(--py, 0) * 30px)
+    ) scale(0.5);
+  }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .logo-left { width: 110px !important; height: 110px !important; }
+  .logo-particle { width: 6px; height: 6px; }
+}
+
+@media (max-width: 520px) {
+  .logo-left { width: 90px !important; height: 90px !important; }
+  .logo-particle { width: 5px; height: 5px; }
+}
+</style>
+
+<script>
+// 🎆 Génération des particules autour du logo
+(function() {
+  function addParticles() {
+    const logos = document.querySelectorAll('.logo-left');
+    
+    logos.forEach(logo => {
+      // Ne pas dupliquer
+      if (logo.querySelector('.logo-particle')) return;
+      
+      // 8 particules autour du logo
+      for (let i = 0; i < 8; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'logo-particle';
+        
+        // Direction selon angle
+        const angle = (i * 45) * (Math.PI / 180);
+        particle.style.setProperty('--px', Math.cos(angle).toFixed(2));
+        particle.style.setProperty('--py', Math.sin(angle).toFixed(2));
+        
+        logo.appendChild(particle);
+      }
+    });
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addParticles);
+  } else {
+    addParticles();
+  }
+})();
+</script>
+
+</head>
+
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-left">
+      <img src="Images/logo-creil-insoumise.png" alt="Creil l'insoumise" onerror="this.style.display='none'"/>
+    </div>
+    <div class="header-title">
+      <h1>📜 Proposer une pétition</h1>
+      <p>Collectez des soutiens pour une cause importante</p>
+    </div>
+    
+  </div>
+
+  <!-- Video explicatif -->
+  <div class="container">
+    <div class="video-container">
+      <video controls>
+        <source src="video/Proposer_une_petition/presentation.mp4" type="video/mp4" />
+        Votre navigateur ne supporte pas la vidéo.
+      </video>
+    </div>
+
+    <!-- Form -->
+    <div class="form-card">
+      <form id="proposer-petition">
+        <div class="form-group">
+          <label for="titre">Titre de la pétition *</label>
+          <input type="text" id="titre" required maxlength="100" placeholder="Ex. : Réouverture du parc Martin" />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description *</label>
+          <textarea id="description" required placeholder="Expliquez pourquoi cette pétition est importante..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="objectif">Objectif (nombre de signatures visé)</label>
+          <input type="number" id="objectif" value="800" min="1" readonly />
+          <div class="info-box">
+
+⚠️il suffira de réunir <strong>800 signatures</strong> (soit environ 5 % du corps électoral) pour déclencher une consultation ou inscrire un sujet à l'ordre du jour du Conseil Municipal .<br/>
+
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Publier la pétition</button>
+
+        <div class="btn-actions">
+          <a href="index.html" class="btn-back">← Retour à la consultation</a>
+          <a href="petition-liste.html" class="btn-voir-toutes">👁️ Voir toutes les pétitions</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let auteurId = localStorage.getItem('auteur_id');
+    if (!auteurId) {
+      auteurId = Date.now().toString();
+      localStorage.setItem('auteur_id', auteurId);
+    }
+
+    document.getElementById('proposer-petition').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const titre = document.getElementById('titre').value.trim();
+      const description = document.getElementById('description').value.trim();
+      const objectif = 800;
+
+      const id = Date.now().toString();
+      const date = new Date().toLocaleDateString('fr-FR');
+
+      const nouvellePetition = {
+        id,
+        titre,
+        description,
+        objectif,
+        signatures: 0,
+        date,
+        auteurId: auteurId
+      };
+
+      let petitions = [];
+      try {
+        const stored = localStorage.getItem('petitions-citoyennes');
+        if (stored) {
+          petitions = JSON.parse(stored);
+        }
+      } catch (e) {
+        console.error('Erreur lors du parsing de localStorage:', e);
+        petitions = [];
+      }
+
+      petitions.unshift(nouvellePetition);
+
+      try {
+        localStorage.setItem('petitions-citoyennes', JSON.stringify(petitions));
+      } catch (e) {
+        console.error('Erreur lors de la sauvegarde dans localStorage:', e);
+        alert('❌ Erreur : impossible de sauvegarder la pétition.');
+        return;
+      }
+
+      alert('✅ Votre pétition a été publiée !\nElle sera visible dans la liste.');
+      window.location.href = 'petition-liste.html';
+    });
+  </script>
+</body>
+</html>

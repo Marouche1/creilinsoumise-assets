@@ -1,148 +1,258 @@
-<!-- Fichier : index.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jeunesse — Programme Creil l'insoumise</title>
-  <link rel="stylesheet" href="../css/style.css" />
-  <script defer src="../js/app.js"></script>
+  <title>🏛️ INDEX - Consultation citoyenne (Page principale)</title>
+
   <style>
-    .page-title {
-      text-align: center;
-      margin: 24px 0 16px;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: white;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    /* === VARIABLES CSS === */
+    /* Définition des couleurs et styles réutilisables dans tout le document */
+    :root{
+      --bg1:#c2185b;      /* Couleur de fond principale (rose foncé) */
+      --bg2:#8e24aa;      /* Couleur de fond secondaire (violet) */
+      --bg3:#ff5a5f;      /* Couleur accent (rouge-rose) */
+      --card:#ffffff10;   /* Couleur de carte semi-transparente */
+      --card2:#ffffff14;  /* Couleur de carte légèrement plus opaque */
+      --text:#ffffff;     /* Couleur du texte (blanc) */
+      --muted:#ffffffcc;  /* Couleur du texte atténué (blanc transparent) */
+      --shadow: 0 18px 45px rgba(0,0,0,.28);   /* Ombre portée forte */
+      --shadow2: 0 10px 25px rgba(0,0,0,.22);  /* Ombre portée moyenne */
+      --radius: 22px;     /* Rayon de bordure pour les éléments arrondis */
     }
 
-    .intro-text {
-      text-align: center;
-      margin: 16px 0 24px;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1rem;
-      line-height: 1.6;
-      padding: 0 16px;
+    /* === RÉINITIALISATION === */
+    /* Applique le box-sizing à tous les éléments pour un calcul plus prévisible des dimensions */
+    *{ box-sizing:border-box; }
+
+    /* === STYLE DU BODY === */
+    /* Configuration de la page principale avec un dégradé animé en arrière-plan */
+    body{
+      margin:0;  /* Supprime les marges par défaut */
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;  /* Police système native */
+      color: var(--text);  /* Utilise la couleur de texte définie (blanc) */
+      /* Crée un arrière-plan avec plusieurs couches de dégradés radiaux pour un effet de profondeur */
+      background: radial-gradient(1000px 500px at 20% 10%, #ff4f7a55, transparent 60%),
+                  radial-gradient(900px 500px at 85% 30%, #8a2be255, transparent 60%),
+                  linear-gradient(135deg, var(--bg1), var(--bg2));
+      min-height:100vh;  /* Assure que la page fait au minimum la hauteur de l'écran */
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-top: 24px;
+    /* === STYLE DES LIENS === */
+    /* Supprime le soulignement et hérite de la couleur du parent */
+    a{ 
+      color:inherit; 
+      text-decoration:none; 
     }
 
-    .service-btn {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 18px;
-      border-radius: 22px;
-      text-decoration: none;
-      color: white;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      min-height: 110px;
+    /* === CONTENEUR PRINCIPAL === */
+    /* Centre le contenu avec une largeur maximale et ajoute du padding */
+    .page{
+      max-width: 980px;      /* Largeur maximale de 980px */
+      margin: 0 auto;        /* Centre horizontalement */
+      padding: 22px 16px 34px;  /* Espacement interne : haut, gauche/droite, bas */
     }
 
-    .service-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
+    /* === BARRE SUPÉRIEURE (HEADER) === */
+    /* Affiche les logos et le titre en ligne avec espacement égal */
+    .topbar{
+      display:flex;                    /* Disposition flexbox */
+      align-items:center;              /* Centre verticalement les éléments */
+      justify-content:space-between;   /* Espace égal entre les éléments */
+      gap:16px;                        /* Espacement de 16px entre les éléments */
+      margin-bottom: 14px;             /* Marge en bas de la barre */
     }
 
-    .service-btn:active {
-      transform: translateY(0);
+    /* === STYLE DES LOGOS === */
+    /* Crée des cercles blancs pour contenir les logos */
+    .logo{
+      width:120px;                          /* Largeur augmentée du cercle */
+      height:120px;                         /* Hauteur augmentée du cercle */
+      border-radius: 999px;                 /* Bordure arrondie pour créer un cercle */
+      background: #fff;                     /* Fond blanc */
+      display:flex;                         /* Disposition flexbox */
+      align-items:center;                   /* Centre le contenu verticalement */
+      justify-content:center;               /* Centre le contenu horizontalement */
+      box-shadow: var(--shadow2);           /* Ajoute une ombre portée */
+      overflow:hidden;                      /* Cache tout dépassement */
+      border: 4px solid rgba(255,255,255,.55);  /* Bordure blanche semi-transparente */
     }
 
-    .service-icon {
-      font-size: 42px;
-      flex: 0 0 auto;
+    /* Assure que les images dans les logos remplissent le conteneur */
+    .logo img{
+      width:60%;           /* Remplit toute la largeur */
+      height:60%;          /* Remplit toute la hauteur */
+      object-fit: cover;    /* Redimensionne l'image pour couvrir le conteneur */
     }
 
-    .service-text {
-      flex: 1;
+    /* === ZONE DU TITRE === */
+    /* Centre le titre entre les deux logos */
+    .titleWrap{
+      flex:1;              /* Prend tout l'espace disponible */
+      text-align:center;   /* Centre le texte */
+      padding: 6px 0;      /* Espacement vertical */
     }
 
-    .service-text .title {
-      font-weight: 800;
-      font-size: 15px;
-      margin-bottom: 4px;
-      line-height: 1.2;
+    /* Style du titre principal (h1) */
+    .titleWrap h1{
+      margin:0;                              /* Supprime les marges par défaut */
+      font-size: clamp(22px, 3.2vw, 34px);  /* Taille responsive : min 22px, max 34px */
+      letter-spacing: .2px;                  /* Espacement entre les lettres */
+      text-shadow: 0 10px 30px rgba(0,0,0,.25);  /* Ombre portée sur le texte */
     }
 
-    .service-text .desc {
-      font-size: 12px;
-      opacity: 0.85;
-      line-height: 1.3;
+    /* Style du sous-titre (p) */
+    .titleWrap p{
+      margin: 6px 0 0;      /* Marge en haut uniquement */
+      color: var(--muted);  /* Couleur atténuée */
+      font-size: 14px;      /* Taille de police */
     }
 
-    /* Bouton spécial "Mes propositions" */
-    .special-btn {
-      grid-column: span 2;
-      background: linear-gradient(135deg, #feca57, #ff6348, #ff9ff3);
-      position: relative;
-      overflow: hidden;
-      animation: pulse 3s ease-in-out infinite;
+    /* === SECTION HERO (VIDÉO) === */
+    /* Conteneur principal de la vidéo avec bordures et ombres */
+    .hero{
+      margin-top: 10px;                                      /* Marge en haut */
+      background: linear-gradient(135deg, #ff6a0040, #7b2cff45);  /* Dégradé de fond */
+      border-radius: var(--radius);                          /* Bordures arrondies */
+      padding: 14px;                                         /* Espacement interne */
+      box-shadow: var(--shadow);                             /* Ombre portée */
+      border: 1px solid rgba(255,255,255,.18);              /* Bordure blanche transparente */
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02); }
+    /* Conteneur interne pour la vidéo */
+    .heroInner{
+      background: rgba(0,0,0,.28);                 /* Fond noir semi-transparent */
+      border-radius: calc(var(--radius) - 8px);    /* Bordures arrondies (8px de moins que le parent) */
+      padding: 14px;                               /* Espacement interne */
+      border: 1px solid rgba(255,255,255,.14);    /* Bordure blanche transparente */
     }
 
-    .special-btn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      animation: rotate 8s linear infinite;
+    /* Conteneur de la vidéo avec ratio 16:9 */
+    .heroVideo{
+      width: 100%;               /* Largeur totale */
+      aspect-ratio: 16 / 9;      /* Maintient le ratio 16:9 */
+      border-radius: 16px;       /* Bordures arrondies */
+      overflow:hidden;           /* Cache tout dépassement */
+      box-shadow: 0 12px 25px rgba(0,0,0,.35);  /* Ombre portée */
+      background:#000;           /* Fond noir */
     }
 
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    /* Style de l'élément vidéo */
+    video{
+      width:100%;          /* Largeur totale */
+      height:100%;         /* Hauteur totale */
+      object-fit: cover;   /* Redimensionne pour couvrir */
+      display:block;       /* Affiche en bloc pour éviter les espaces */
     }
 
-    /* Couleurs des boutons - Vibrantes et attractives pour les jeunes */
-    .btn-jobs { background: linear-gradient(135deg, #ff6b6b, #ee5a6f); }
-    .btn-formation { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
-    .btn-logement { background: linear-gradient(135deg, #f093fb, #f5576c); }
-    .btn-aides { background: linear-gradient(135deg, #feca57, #ff9ff3); }
-    .btn-sante { background: linear-gradient(135deg, #48dbfb, #0abde3); }
-    .btn-sports { background: linear-gradient(135deg, #ff9ff3, #feca57); }
-    .btn-culture { background: linear-gradient(135deg, #a29bfe, #6c5ce7); }
-    .btn-mobilite { background: linear-gradient(135deg, #fd79a8, #fdcb6e); }
-    .btn-engagement { background: linear-gradient(135deg, #00b894, #00cec9); }
-    .btn-ecoute { background: linear-gradient(135deg, #ff7675, #d63031); }
-
-    .back-link {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 18px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 16px;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
+    /* Texte sous la vidéo */
+    .heroText{
+      margin-top: 12px;      /* Marge en haut */
+      color: var(--muted);   /* Couleur atténuée */
+      font-size: 14px;       /* Taille de police */
+      line-height: 1.45;     /* Hauteur de ligne pour la lisibilité */
     }
 
-    .back-link:hover {
-      background: rgba(255, 255, 255, 0.25);
+    /* === TITRE DE SECTION === */
+    .sectionTitle{
+      margin: 18px 6px 10px;                    /* Marges : haut, gauche/droite, bas */
+      font-size: 18px;                          /* Taille de police */
+      color: #fff;                              /* Couleur blanche */
+      text-shadow: 0 10px 30px rgba(0,0,0,.20); /* Ombre portée sur le texte */
     }
 
-    @media (max-width: 600px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      .special-btn {
-        grid-column: span 1;
-      }
+    /* === GRILLE DE 3 COLONNES === */
+    /* Crée une grille responsive de 3 colonnes pour les cartes d'action */
+    .grid3{
+      display:grid;                           /* Utilise CSS Grid */
+      grid-template-columns: 1fr 1fr 1fr;    /* 3 colonnes de taille égale */
+      gap: 14px;                             /* Espacement entre les colonnes */
     }
+
+    /* Sur écrans moyens et petits, passe à 1 colonne */
+    @media (max-width: 700px){
+      .grid3{ grid-template-columns: 1fr; }
+    }
+
+    /* === STYLE DES CARTES BOUTONS === */
+    /* Cartes cliquables avec icône et texte */
+    .cardBtn{
+      display:flex;                    /* Disposition flexbox */
+      align-items:center;              /* Centre verticalement */
+      gap: 12px;                       /* Espacement entre icône et texte */
+      padding: 16px;                   /* Espacement interne */
+      border-radius: 22px;             /* Bordures arrondies */
+      box-shadow: var(--shadow2);      /* Ombre portée */
+      border: 1px solid rgba(255,255,255,.18);  /* Bordure blanche transparente */
+      /* Dégradé de fond semi-transparent */
+      background: linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.08));
+      min-height: 92px;                /* Hauteur minimale */
+      transition: transform .12s ease; /* Animation de transformation */
+    }
+
+    /* Effet au survol : légère élévation */
+    .cardBtn:hover{ transform: translateY(-1px); }
+
+    /* Effet au clic : légère compression */
+    .cardBtn:active{ transform: translateY(0px) scale(.99); }
+
+    /* === STYLE DE L'ICÔNE === */
+    /* Conteneur carré pour l'emoji/icône */
+    .icon{
+      width:54px;                                 /* Largeur */
+      height:54px;                                /* Hauteur */
+      border-radius: 18px;                        /* Bordures arrondies */
+      display:flex;                               /* Disposition flexbox */
+      align-items:center;                         /* Centre verticalement */
+      justify-content:center;                     /* Centre horizontalement */
+      background: rgba(255,255,255,.18);          /* Fond blanc transparent */
+      border: 1px solid rgba(255,255,255,.25);   /* Bordure blanche transparente */
+      box-shadow: 0 10px 22px rgba(0,0,0,.18);   /* Ombre portée */
+      flex:0 0 auto;                             /* Ne rétrécit pas, ne grandit pas */
+      font-size: 26px;                           /* Taille de l'emoji */
+    }
+
+    /* === TEXTE DE LA CARTE === */
+    /* Titre de la carte (en gras) */
+    .cardTxt .t{
+      margin:0;          /* Pas de marge */
+      font-weight: 900;  /* Très gras */
+      font-size: 16px;   /* Taille de police */
+      line-height: 1.1;  /* Hauteur de ligne compacte */
+    }
+
+    /* Sous-titre de la carte (description) */
+    .cardTxt .s{
+      margin: 5px 0 0;     /* Marge en haut uniquement */
+      color: var(--muted); /* Couleur atténuée */
+      font-size: 13px;     /* Taille de police */
+      line-height: 1.3;    /* Hauteur de ligne */
+    }
+
+    /* === COULEURS DES CARTES === */
+    /* Chaque carte a son propre dégradé de couleur */
+    .banque{ background: linear-gradient(135deg, #ff2d6fcc, #a100ffcc); }    /* Rose vers violet */
+    .petition{ background: linear-gradient(135deg, #ffb300cc, #ff2d6fcc); }  /* Jaune vers rose */
+    .mairie{ background: linear-gradient(135deg, #6a00ffcc, #ff2d6fcc); }    /* Violet vers rose */
+
+    /* === BOUTON RETOUR === */
+    /* Bouton pour revenir à la page précédente */
+    .back{
+      margin-top: 14px;                          /* Marge en haut */
+      display:inline-flex;                       /* Disposition flexbox inline */
+      align-items:center;                        /* Centre verticalement */
+      gap:8px;                                   /* Espacement entre flèche et texte */
+      color: #fff;                               /* Couleur blanche */
+      opacity: .9;                               /* Légèrement transparent */
+      font-weight: 700;                          /* Gras */
+      padding: 10px 12px;                        /* Espacement interne */
+      border-radius: 14px;                       /* Bordures arrondies */
+      background: rgba(0,0,0,.18);              /* Fond noir transparent */
+      border: 1px solid rgba(255,255,255,.14);  /* Bordure blanche transparente */
+    }
+
+    /* Au survol, devient totalement opaque */
+    .back:hover{ opacity: 1; }
   </style>
 
 <style>
@@ -335,143 +445,95 @@
 </script>
 
 </head>
-<body class="app-bg">
-  <div class="app-shell">
-    <!-- Header -->
-    <header class="app-header">
-      <div class="logo-left">
-        <img src="images/logo-creil-insoumise.png" alt="Creil l'insoumise" />
+
+<body>
+  <main class="page">
+
+    <!-- === HEADER (BARRE SUPÉRIEURE) === -->
+    <div class="topbar">
+      <!-- Logo de gauche : Creil l'insoumise -->
+      <div class="logo" title="Creil l'insoumise">
+        <!-- CHEMIN: Remonte de 3 niveaux depuis bouton_consultation_citoyenne vers le dossier Images local -->
+        <!-- Structure: bouton_consultation_citoyenne/Images/logo-creil-insoumise.png -->
+        <img src="Images/logo-creil-insoumise.png" alt="Creil l'insoumise" />
       </div>
-      
-    </header>
 
-    <!-- Contenu -->
-    <main>
-      <h1 class="page-title">Service Jeunesse</h1>
+      <!-- Titre central -->
+      <div class="titleWrap">
+        <h1>Consultation citoyenne</h1>
+        <p>Participez, proposez, suivez les projets de votre ville</p>
+      </div>
 
-      <section class="content-card gradient-card">
-        <!-- Vidéo explicative -->
-        <div class="hero-video-wrapper">
-          <video class="hero-video" controls playsinline preload="metadata">
-            <source src="video/jeunesse/jeunesse.mp4" type="video/mp4" />
+      <!-- Logo de droite : Ville de Creil -->
+      <div class="logo" title="Ville de Creil">
+        <!-- CHEMIN: Remonte de 3 niveaux depuis bouton_consultation_citoyenne vers le dossier Images local -->
+        <!-- Structure: bouton_consultation_citoyenne/Images/logo-ville-creil.png -->
+        <img src="Images/logo-ville-creil.png" alt="Ville de Creil" />
+      </div>
+    </div>
+
+    <!-- === SECTION VIDÉO INTRO === -->
+    <section class="hero">
+      <div class="heroInner">
+        <div class="heroVideo">
+          <!-- Élément vidéo avec contrôles natifs du navigateur -->
+          <video controls preload="metadata" playsinline>
+            <!-- CHEMIN: Depuis bouton_consultation_citoyenne vers le dossier video local -->
+            <!-- Structure: bouton_consultation_citoyenne/video/consultation_citoyenne/consultation_citoyenne.mp4 -->
+            <source src="video/consultation_citoyenne/consultation_citoyenne.mp4" type="video/mp4" />
+            <!-- Message affiché si le navigateur ne supporte pas la vidéo -->
             Votre navigateur ne supporte pas la vidéo.
           </video>
         </div>
-
-        <!-- Texte explicatif -->
-        <div class="intro-text">
-          <strong>À Creil, trop de jeunes sont perdus, sans diplôme, parfois dans des situations difficiles.</strong><br>
-          Ce service propose des solutions concrètes : formation, emploi, aide financière, engagement citoyen et projets innovants pour vous donner une vraie chance de réussir. Parce qu'un jeune qui réussit, c'est toute la ville qui gagne.
+        <!-- Texte d'explication sous la vidéo -->
+        <div class="heroText">
+          Bienvenue dans la consultation citoyenne de Creil ! Ici, vous pouvez proposer des idées, signer des pétitions, et voter pour les projets de la mairie.
         </div>
+      </div>
+    </section>
 
-        <!-- Grille des services -->
-        <div class="services-grid">
-          
-          <!-- 1. Jobs & Stages -->
-          <a href="bouton-jobs-stages/jobs-stages.html" class="service-btn btn-jobs">
-            <div class="service-icon">💼</div>
-            <div class="service-text">
-              <div class="title">Jobs & Stages</div>
-              <div class="desc">Offres d'emploi, stages, alternance</div>
-            </div>
-          </a>
+    <!-- === TITRE DE LA SECTION D'ACTION === -->
+    <h2 class="sectionTitle">Choisissez votre action</h2>
 
-          <!-- 2. Formation & Orientation -->
-          <a href="bouton-formation-orientation/formation-orientation.html" class="service-btn btn-formation">
-            <div class="service-icon">🎓</div>
-            <div class="service-text">
-              <div class="title">Formation & Orientation</div>
-              <div class="desc">Parcours de formation, aide orientation</div>
-            </div>
-          </a>
-
-          <!-- 3. Logement jeunes -->
-          <a href="bouton-logement-jeunes/logement-jeunes.html" class="service-btn btn-logement">
-            <div class="service-icon">🏠</div>
-            <div class="service-text">
-              <div class="title">Logement jeunes</div>
-              <div class="desc">Aide logement, résidences jeunes, FJT</div>
-            </div>
-          </a>
-
-          <!-- 4. Aides financières -->
-          <a href="bouton-aides-financieres/aides-financieres.html" class="service-btn btn-aides">
-            <div class="service-icon">💶</div>
-            <div class="service-text">
-              <div class="title">Aides financières</div>
-              <div class="desc">Bourses, aides CAF, fonds d'urgence</div>
-            </div>
-          </a>
-
-          <!-- 5. Santé jeunes -->
-          <a href="bouton-sante-jeunes/sante-jeunes.html" class="service-btn btn-sante">
-            <div class="service-icon">🏥</div>
-            <div class="service-text">
-              <div class="title">Santé jeunes</div>
-              <div class="desc">Planning, centre santé, psy gratuit</div>
-            </div>
-          </a>
-
-          <!-- 6. Sports & Loisirs -->
-          <a href="bouton-sports-loisirs/sports-loisirs.html" class="service-btn btn-sports">
-            <div class="service-icon">⚽</div>
-            <div class="service-text">
-              <div class="title">Sports & Loisirs</div>
-              <div class="desc">Clubs sportifs, activités, Pass'Sport</div>
-            </div>
-          </a>
-
-          <!-- 7. Culture & Événements -->
-          <a href="bouton-culture-evenements/culture-evenements.html" class="service-btn btn-culture">
-            <div class="service-icon">🎭</div>
-            <div class="service-text">
-              <div class="title">Culture & Événements</div>
-              <div class="desc">Concerts, spectacles, cinéma, ateliers</div>
-            </div>
-          </a>
-
-          <!-- 8. Mobilité -->
-          <a href="bouton-mobilite/mobilite.html" class="service-btn btn-mobilite">
-            <div class="service-icon">🚴</div>
-            <div class="service-text">
-              <div class="title">Mobilité</div>
-              <div class="desc">Pass transport, permis à 1€, aide vélo</div>
-            </div>
-          </a>
-
-          <!-- 9. Engagement citoyen -->
-          <a href="bouton-engagement-citoyen/engagement-citoyen.html" class="service-btn btn-engagement">
-            <div class="service-icon">🤝</div>
-            <div class="service-text">
-              <div class="title">Engagement citoyen</div>
-              <div class="desc">Bénévolat, Service Civique, projets</div>
-            </div>
-          </a>
-
-          <!-- 10. Point écoute jeunes -->
-          <a href="bouton-point-ecoute/point-ecoute.html" class="service-btn btn-ecoute">
-            <div class="service-icon">📞</div>
-            <div class="service-text">
-              <div class="title">Point écoute jeunes</div>
-              <div class="desc">Accompagnement, aide, écoute</div>
-            </div>
-          </a>
-
-          <!-- 11. MES PROPOSITIONS (BOUTON SPÉCIAL) -->
-          <a href="bouton-mes-propositions/mes-propositions.html" class="service-btn special-btn">
-            <div class="service-icon">💡</div>
-            <div class="service-text">
-              <div class="title">💡 Mes propositions</div>
-              <div class="desc">Propositions innovantes : création commerce, financement études/voyages, aide réseaux sociaux, e-commerce...</div>
-            </div>
-          </a>
-
+    <!-- === GRILLE DES 3 ACTIONS PRINCIPALES === -->
+    <section class="grid3">
+      <!-- === BOUTON 1 : BANQUE D'IDÉES === -->
+      <!-- Lien vers la page de la banque d'idées citoyennes -->
+      <a class="cardBtn banque" href="fil-idees.html">
+        <div class="icon">💡</div> <!-- Emoji ampoule pour les idées -->
+        <div class="cardTxt">
+          <p class="t">Banque d'idées citoyennes</p>
+          <p class="s">Proposez et soutenez des idées</p>
         </div>
+      </a>
 
-        <!-- Retour -->
-        <a href="../programme.html" class="back-link">← Retour au Programme</a>
-      </section>
-    </main>
-  </div>
+      <!-- === BOUTON 2 : PÉTITION === -->
+      <!-- Lien vers la page pour proposer une pétition -->
+      <a class="cardBtn petition" href="petition.html">
+        <div class="icon">📜</div> <!-- Emoji parchemin pour les pétitions -->
+        <div class="cardTxt">
+          <p class="t">Proposer une pétition</p>
+          <p class="s">Rassembler des soutiens pour une cause</p>
+        </div>
+      </a>
+
+      <!-- === BOUTON 3 : PROJETS MAIRIE === -->
+      <!-- Lien vers la page des projets de la mairie -->
+      <a class="cardBtn mairie" href="mairie.html">
+        <div class="icon">🏛️</div> <!-- Emoji bâtiment pour la mairie -->
+        <div class="cardTxt">
+          <p class="t">Ce que prévoit la mairie</p>
+          <p class="s">Votez pour les projets prioritaires</p>
+        </div>
+      </a>
+    </section>
+
+    <!-- === BOUTON RETOUR === -->
+    <!-- Lien pour retourner à la page programme -->
+    <!-- CHEMIN: Remonte de 2 niveaux depuis bouton_consultation_citoyenne vers programme.html -->
+    <!-- Structure: boutons_services/programme/bouton_consultation_citoyenne/ -> boutons_services/programme/programme.html -->
+    <a class="back" href="../programme.html">← Retour aux services</a>
+
+  </main>
 </body>
 </html>

@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💡 FIL-IDEES - Banque d'idées citoyennes</title>
+
+  <style>
+    :root{
+      --bg1:#c2185b;
+      --bg2:#8e24aa;
+      --bg3:#ff5a5f;
+      --card:#ffffff10;
+      --card2:#ffffff14;
+      --text:#ffffff;
+      --muted:#ffffffcc;
+      --shadow: 0 18px 45px rgba(0,0,0,.28);
+      --shadow2: 0 10px 25px rgba(0,0,0,.22);
+      --radius: 22px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+    }
+
+    .header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:16px 20px;
+      background: rgba(0,0,0,.1);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .logo-left,
+    .logo-right{
+      width:100px;
+      height:100px;
+      border-radius:999px;
+      overflow:hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,.3);
+      border: 3px solid rgba(255,255,255,.6);
+      margin:0 8px;
+    }
+
+    .logo-left img,
+    .logo-right img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .header-title{
+      text-align:center;
+      flex:1;
+      padding:0 8px;
+    }
+    .header-title h1{
+      margin:0;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: .5px;
+    }
+    .header-title p{
+      margin:4px 0 0;
+      font-size:15px;
+      opacity:.9;
+    }
+
+    .container{
+      max-width:980px;
+      margin:0 auto;
+      padding:20px 16px;
+    }
+
+    .video-container{
+      margin:20px 0;
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:#000;
+    }
+
+    .video-container video{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .section-title{
+      margin:20px 0 10px;
+      font-size:18px;
+      color:#fff;
+      text-align:center;
+      text-shadow:0 8px 20px rgba(0,0,0,.2);
+    }
+
+    .idee-card{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:var(--radius);
+      padding:16px;
+      margin-bottom:16px;
+      box-shadow:var(--shadow2);
+      transition:transform .1s ease;
+    }
+    .idee-card:hover{
+      transform:translateY(-2px);
+    }
+
+    .idee-title{
+      font-weight:900;
+      font-size:18px;
+      margin:0 0 8px;
+      line-height:1.2;
+    }
+
+    .idee-meta{
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:10px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .meta-item{
+      display:flex;
+      align-items:center;
+      gap:4px;
+      font-size:13px;
+    }
+
+    .idee-desc{
+      color:#ffffffe6;
+      line-height:1.5;
+      margin-bottom:12px;
+    }
+
+    .vote-buttons{
+      display:flex;
+      gap:10px;
+      margin-top:10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-vote{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      padding:8px 16px;
+      border:none;
+      border-radius:18px;
+      font-weight:bold;
+      font-size:14px;
+      cursor:pointer;
+      box-shadow:0 6px 14px rgba(0,0,0,.25);
+      transition:all .1s ease;
+    }
+
+    .btn-for{
+      background:linear-gradient(135deg, #4caf50, #8bc34a);
+      color:white;
+    }
+    .btn-for:active{
+      transform:scale(0.96);
+    }
+    .btn-for.active{
+      background:linear-gradient(135deg, #388e3c, #689f38);
+      box-shadow:0 8px 20px rgba(0,0,0,.3);
+    }
+
+    .btn-against{
+      background:linear-gradient(135deg, #f44336, #e57373);
+      color:white;
+    }
+    .btn-against:active{
+      transform:scale(0.96);
+    }
+    .btn-against.active{
+      background:linear-gradient(135deg, #d32f2f, #c62828);
+      box-shadow:0 8px 20px rgba(0,0,0,.3);
+    }
+
+    .btn-cancel-publication{
+      background:linear-gradient(135deg, #ff6b35, #f7931e);
+      color:white;
+    }
+    .btn-cancel-publication:active{
+      transform:scale(0.96);
+    }
+    .btn-cancel-publication:hover{
+      background:linear-gradient(135deg, #ff5722, #e65100);
+      box-shadow:0 8px 20px rgba(0,0,0,.3);
+    }
+
+    .signature-info{
+      margin-top:12px;
+      padding:10px 12px;
+      background:rgba(255,255,255,.06);
+      border-left:3px solid rgba(255,255,255,.5);
+      border-radius:8px;
+      font-size:12px;
+      color:rgba(255,255,255,.9);
+      font-style:italic;
+      line-height:1.4;
+    }
+
+    .btn-proposer{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 24px;
+      background:linear-gradient(135deg, #6a00ff, #ff2d6f);
+      border:none;
+      border-radius:22px;
+      color:white;
+      font-weight:bold;
+      font-size:16px;
+      text-decoration:none;
+      box-shadow:var(--shadow);
+      margin-top:20px;
+      transition:transform .1s ease;
+    }
+    .btn-proposer:hover,
+    .btn-proposer:active{
+      transform:translateY(-1px) scale(1.02);
+    }
+
+    .btn-back{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#fff;
+      opacity:.9;
+      font-weight:700;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.14);
+      text-decoration:none;
+      margin-top:16px;
+    }
+    .btn-back:hover{
+      opacity:1;
+    }
+
+    @media (max-width: 520px){
+      .header{
+        flex-direction:column;
+        gap:12px;
+      }
+      .header-title{
+        padding:0;
+      }
+      .video-container{
+        margin:16px 0;
+      }
+      .btn-proposer{
+        font-size:14px;
+        padding:12px 20px;
+      }
+      .vote-buttons{
+        flex-direction:column;
+      }
+      .btn-vote, .btn-cancel-publication{
+        width:100%;
+        justify-content:center;
+      }
+    }
+  </style>
+
+<style>
+/* 🎨 HEADER CENTRÉ AVEC EFFETS SPÉCIAUX */
+.app-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 24px;
+  position: relative;
+  min-height: 180px;
+}
+
+/* ❌ MASQUER LOGO VILLE */
+.logo-right {
+  display: none !important;
+}
+
+/* 🌟 Conteneur pour particules */
+.logo-left {
+  position: relative;
+  width: 140px !important;
+  height: 140px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+  padding: 12px !important;
+  z-index: 10;
+  
+  /* 💫 Ombre lumineuse pulsante */
+  box-shadow: 
+    0 0 40px rgba(255, 45, 111, 0.5),
+    0 0 80px rgba(138, 43, 226, 0.4),
+    0 10px 40px rgba(0, 0, 0, 0.2) !important;
+  
+  animation: pulse-glow 3s ease-in-out infinite !important;
+}
+
+/* 🌈 Bordure arc-en-ciel animée */
+.logo-left::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    #ff2d6f,
+    #8a2be2,
+    #ff6a00,
+    #ff2d6f
+  );
+  background-size: 300% 300%;
+  z-index: -1;
+  animation: gradient-rotate 6s linear infinite;
+}
+
+.logo-left img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) !important;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-left:hover img {
+  transform: scale(1.08) rotate(8deg);
+}
+
+/* 🎆 PARTICULES LUMINEUSES */
+.logo-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: float-particle 4s ease-in-out infinite;
+}
+
+.logo-particle::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, currentColor 0%, transparent 70%);
+  filter: blur(2px);
+}
+
+/* Positions des 8 particules */
+.logo-particle:nth-child(1) { color: #ff2d6f; animation-delay: 0s; left: 50%; top: -10px; }
+.logo-particle:nth-child(2) { color: #8a2be2; animation-delay: 0.5s; left: calc(100% + 5px); top: 15%; }
+.logo-particle:nth-child(3) { color: #ff6a00; animation-delay: 1s; left: calc(100% + 10px); top: 50%; }
+.logo-particle:nth-child(4) { color: #00d4ff; animation-delay: 1.5s; left: calc(100% + 5px); top: 85%; }
+.logo-particle:nth-child(5) { color: #ff2d6f; animation-delay: 2s; left: 50%; top: calc(100% + 10px); }
+.logo-particle:nth-child(6) { color: #8a2be2; animation-delay: 2.5s; left: -10px; top: 85%; }
+.logo-particle:nth-child(7) { color: #ff6a00; animation-delay: 3s; left: -15px; top: 50%; }
+.logo-particle:nth-child(8) { color: #00d4ff; animation-delay: 3.5s; left: -10px; top: 15%; }
+
+/* 🌈 Animations */
+@keyframes gradient-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 40px rgba(255, 45, 111, 0.5),
+      0 0 80px rgba(138, 43, 226, 0.4),
+      0 10px 40px rgba(0, 0, 0, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 
+      0 0 60px rgba(255, 45, 111, 0.7),
+      0 0 120px rgba(138, 43, 226, 0.6),
+      0 15px 50px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes float-particle {
+  0% { opacity: 0; transform: translate(0, 0) scale(0); }
+  10% { opacity: 1; transform: translate(0, 0) scale(1); }
+  50% { 
+    opacity: 0.8;
+    transform: translate(
+      calc(var(--px, 0) * 15px),
+      calc(var(--py, 0) * 15px)
+    ) scale(1.2);
+  }
+  100% { 
+    opacity: 0;
+    transform: translate(
+      calc(var(--px, 0) * 30px),
+      calc(var(--py, 0) * 30px)
+    ) scale(0.5);
+  }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .logo-left { width: 110px !important; height: 110px !important; }
+  .logo-particle { width: 6px; height: 6px; }
+}
+
+@media (max-width: 520px) {
+  .logo-left { width: 90px !important; height: 90px !important; }
+  .logo-particle { width: 5px; height: 5px; }
+}
+</style>
+
+<script>
+// 🎆 Génération des particules autour du logo
+(function() {
+  function addParticles() {
+    const logos = document.querySelectorAll('.logo-left');
+    
+    logos.forEach(logo => {
+      // Ne pas dupliquer
+      if (logo.querySelector('.logo-particle')) return;
+      
+      // 8 particules autour du logo
+      for (let i = 0; i < 8; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'logo-particle';
+        
+        // Direction selon angle
+        const angle = (i * 45) * (Math.PI / 180);
+        particle.style.setProperty('--px', Math.cos(angle).toFixed(2));
+        particle.style.setProperty('--py', Math.sin(angle).toFixed(2));
+        
+        logo.appendChild(particle);
+      }
+    });
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addParticles);
+  } else {
+    addParticles();
+  }
+})();
+</script>
+
+</head>
+
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-left">
+      <img src="Images/logo-creil-insoumise.png" alt="Creil l'insoumise" />
+    </div>
+    <div class="header-title">
+      <h1>💡 Banque d'idées citoyennes</h1>
+      <p>Proposez, découvrez, soutenez</p>
+    </div>
+    
+  </div>
+
+  <!-- Video explicatif -->
+  <div class="container">
+    <div class="video-container">
+      <video controls>
+        <source src="video/Banque_idees_citoyennes/presentation.mp4" type="video/mp4" />
+        Votre navigateur ne supporte pas la vidéo.
+      </video>
+    </div>
+
+    <h2 class="section-title">Vos idées pour Creil</h2>
+
+    <div id="liste-idees">
+      <!-- Chargé par JavaScript -->
+    </div>
+
+    <a href="idee.html" class="btn-proposer">
+      💡 Proposer une idée
+    </a>
+
+    <a href="index.html" class="btn-back">
+      ← Retour à la consultation
+    </a>
+  </div>
+
+  <script>
+    // Récupérer ou créer l'ID utilisateur
+    let utilisateurId = localStorage.getItem('utilisateur_id');
+    if (!utilisateurId) {
+      utilisateurId = Date.now().toString();
+      localStorage.setItem('utilisateur_id', utilisateurId);
+    }
+
+    function chargerIdees() {
+      const liste = document.getElementById('liste-idees');
+      const idees = JSON.parse(localStorage.getItem('idees-citoyennes') || '[]');
+      const votes = JSON.parse(localStorage.getItem('votes-citoyens') || '{}');
+
+      if (idees.length === 0) {
+        liste.innerHTML = '<p style="text-align:center; color:var(--muted); font-size:16px; margin-top:30px;">Aucune idée n\'a encore été proposée.<br/>Soyez le premier !</p>';
+        return;
+      }
+
+      liste.innerHTML = idees.map(idee => {
+        const monVote = votes[idee.id] || null;
+        const estAuteur = idee.publisherId === utilisateurId;
+
+        return `
+          <div class="idee-card">
+            <div class="idee-title">${idee.titre}</div>
+            <div class="idee-meta">
+              <span class="meta-item">📅 ${idee.date}</span>
+              <span class="meta-item">📍 ${idee.quartier}</span>
+              <span class="meta-item">🔖 ${idee.categorie}</span>
+            </div>
+            <div class="idee-desc">${idee.description}</div>
+            <div class="vote-buttons">
+              <button class="btn-vote btn-for ${monVote === 'for' ? 'active' : ''}" 
+                      onclick="voter('${idee.id}', 'for')">
+                👍 Soutenir (${idee.votesFor || 0})
+              </button>
+              ${estAuteur ? `
+                <button class="btn-vote btn-cancel-publication" 
+                        onclick="annulerPublication('${idee.id}')">
+                  ❌ Annuler la publication
+                </button>
+              ` : ''}
+              <button class="btn-vote btn-against ${monVote === 'against' ? 'active' : ''}" 
+                      onclick="voter('${idee.id}', 'against')">
+                👎 Contre (${idee.votesAgainst || 0})
+              </button>
+            </div>
+            <div class="signature-info">
+              ✍️ Il suffira de réunir 800 signatures (soit environ 5 % du corps électoral) pour déclencher une consultation ou inscrire un sujet à l'ordre du jour du Conseil Municipal
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function voter(id, type) {
+      const idees = JSON.parse(localStorage.getItem('idees-citoyennes') || '[]');
+      const votes = JSON.parse(localStorage.getItem('votes-citoyens') || '{}');
+
+      const idee = idees.find(i => i.id === id);
+      if (!idee) return;
+
+      if (votes[id]) {
+        if (votes[id] === 'for') {
+          idee.votesFor = Math.max(0, (idee.votesFor || 0) - 1);
+        } else if (votes[id] === 'against') {
+          idee.votesAgainst = Math.max(0, (idee.votesAgainst || 0) - 1);
+        }
+      }
+
+      if (type === 'for') {
+        idee.votesFor = (idee.votesFor || 0) + 1;
+        idee.votesAgainst = Math.max(0, (idee.votesAgainst || 0));
+      } else if (type === 'against') {
+        idee.votesAgainst = (idee.votesAgainst || 0) + 1;
+        idee.votesFor = Math.max(0, (idee.votesFor || 0));
+      }
+
+      votes[id] = type;
+
+      localStorage.setItem('idees-citoyennes', JSON.stringify(idees));
+      localStorage.setItem('votes-citoyens', JSON.stringify(votes));
+
+      alert(`✅ Vote enregistré !`);
+      chargerIdees();
+    }
+
+    function annulerPublication(id) {
+      if (!confirm('⚠️ Êtes-vous sûr de vouloir annuler cette publication ? Cette action est irréversible.')) {
+        return;
+      }
+
+      let idees = JSON.parse(localStorage.getItem('idees-citoyennes') || '[]');
+      const votes = JSON.parse(localStorage.getItem('votes-citoyens') || '{}');
+
+      // Supprimer l'idée
+      idees = idees.filter(idee => idee.id !== id);
+      
+      // Supprimer les votes associés
+      delete votes[id];
+
+      localStorage.setItem('idees-citoyennes', JSON.stringify(idees));
+      localStorage.setItem('votes-citoyens', JSON.stringify(votes));
+
+      alert(`✅ Publication annulée avec succès.`);
+      chargerIdees();
+    }
+
+    document.addEventListener('DOMContentLoaded', chargerIdees);
+  </script>
+</body>
+</html>
